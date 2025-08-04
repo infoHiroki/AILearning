@@ -47,13 +47,24 @@
 
 **選択肢**:
 - 文書作成・メール効率化
-- データ分析・Excel活用
+- Excel活用・分析
+- Google Sheets・GAS活用
 - 画像・動画制作
 - 情報収集・リサーチ
 - 業務プロセス改善
 - チーム管理・教育
 
-## 質問6: 学習に使える時間
+## 質問6: 普段使用している表計算ツール
+**質問タイプ**: 単一選択
+**必須**: はい
+
+**選択肢**:
+- A. 主にExcelを使用
+- B. 主にGoogle Sheetsを使用
+- C. 両方を使用
+- D. どちらも使わない
+
+## 質問7: 学習に使える時間
 **質問タイプ**: 単一選択
 **必須**: はい
 
@@ -71,10 +82,12 @@
 - **3-5点**: 中級者コース → `results/intermediate.html`
 - **6-8点**: 上級者コース → `results/advanced.html`
 
-### 特別分岐（質問5の回答による）
-- **Excel/データ分析重視**: 表計算特化コース → `results/excel-focused.html`
-- **クリエイティブ重視**: クリエイティブ特化コース → `results/creative-focused.html`
-- **チーム管理重視**: マネージャー向けコース → `results/manager-focused.html`
+### 特別分岐（質問5・6の回答による）
+- **Excel活用重視 + 主にExcel使用**: Excel特化コース → `results/excel-focused.md`
+- **Google Sheets重視 + 主にGoogle Sheets使用**: Google Sheets特化コース → `results/googlesheets-focused.md`  
+- **両方使用 + データ分析重視**: 表計算統合コース → `results/spreadsheet-integrated.md`
+- **クリエイティブ重視**: クリエイティブ特化コース → `results/creative-focused.md`
+- **チーム管理重視**: マネージャー向けコース → `results/manager-focused.md`
 
 ## Google Forms設定手順
 
