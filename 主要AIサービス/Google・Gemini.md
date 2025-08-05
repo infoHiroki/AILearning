@@ -2,7 +2,7 @@
 
 **所要時間**: 45分  
 **レベル**: 基礎  
-**前提知識**: [OpenAI・Microsoft関係](09-openai-microsoft.md)
+**前提知識**: [AI企業関係図](AI企業関係図.md)
 
 ## 学習目標
 
