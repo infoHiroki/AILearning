@@ -1,98 +1,194 @@
-# カリキュラム全体構成
+# AI学習カリキュラム全体概要
 
-## 基本構成
+**最終更新**: 2025年8月5日  
+**総講座数**: 42講座  
+**総学習時間**: 約60時間  
 
-**総時間**: 10時間（1講座1時間 × 10講座）
-**形式**: 選択式・モジュール形式
-**対象**: AI初学者〜中級者
+## 📚 カリキュラム構成
 
-## 講座一覧
+### 基礎レベル (12講座・約18時間)
 
-### 必須講座（全員受講）
+#### 必修コース
+1. [プロンプト基礎](basic/02-prompt-basics.md) (1.5時間)
+2. [文書作成自動化](basic/03-document-automation.md) (1.5時間)
 
-| 講座名 | 時間 | ファイル | 内容 |
-|--------|------|----------|------|
-| AIセキュリティ・倫理基礎 | 30分 | [required/security-basics.md](required/security-basics.md) | 安全な使い方の基本原則 |
+#### データフォーマット系 (4講座・約4時間)
+3. [Markdown基礎](basic/05-markdown-basics.md) (1時間)
+4. [XML基礎](basic/06-xml-basics.md) (1時間)
+5. [HTML基礎](basic/07-html-basics.md) (1時間)
+6. [JSON基礎](basic/08-json-basics.md) (1時間)
 
-### 基礎講座（入門〜中級者向け）
+#### AI企業・技術系 (4講座・約4時間)
+7. [OpenAI・Microsoft連携](basic/09-openai-microsoft.md) (1時間)
+8. [Google AI技術](basic/10-google-ai.md) (1時間)
+9. [Anthropic・Claude](basic/11-anthropic-claude.md) (1時間)
+10. [AI企業エコシステム](basic/12-ai-ecosystem-map.md) (1時間)
 
-| 講座名 | 時間 | ファイル | 内容 |
-|--------|------|----------|------|
-| AI基本操作 | 1時間 | [basic/01-ai-basics.md](basic/01-ai-basics.md) | ChatGPT等の基本操作 |
-| プロンプト基礎 | 1時間 | [basic/02-prompt-basics.md](basic/02-prompt-basics.md) | 効果的な指示の仕方 |
-| 文書作成自動化 | 1時間 | [basic/03-document-automation.md](basic/03-document-automation.md) | 議事録・メール等の効率化 |
-| 情報収集・要約 | 1時間 | [basic/04-information-processing.md](basic/04-information-processing.md) | リサーチと要約の技術 |
+#### セキュリティ基礎
+11. [セキュリティ基礎](required/security-basics.md) (1時間)
 
-### 中級講座（基礎スキル習得者向け）
+#### プログラミング基礎 (5講座・約7.5時間)
+12. [ターミナル・CLI基礎](programming/terminal-cli.md) (1.5時間)
+13. [Git・GitHub基礎](programming/git-github.md) (1.5時間)
+14. [エディタ・AI連携](programming/editors-ai.md) (1.5時間)
+15. [API基礎](programming/api-basics.md) (1.5時間)
+16. [MCP基礎](programming/mcp-basics.md) (1.5時間)
 
-| 講座名 | 時間 | ファイル | 内容 |
-|--------|------|----------|------|
-| Excel + AI活用 | 1.5時間 | [intermediate/05-excel-ai.md](intermediate/05-excel-ai.md) | Excel・VBA・AI連携 |
-| スプレッドシート + GAS | 1.5時間 | [intermediate/06-spreadsheet-gas.md](intermediate/06-spreadsheet-gas.md) | Google Apps Script活用 |
-| データ分析・可視化 | 1時間 | [intermediate/07-data-analysis.md](intermediate/07-data-analysis.md) | データ処理の自動化 |
-| マルチメディアAI | 1時間 | [intermediate/08-multimedia-ai.md](intermediate/08-multimedia-ai.md) | 画像・音声・動画活用 |
+### 中級レベル (18講座・約25時間)
 
-### 上級講座（システム連携・組織展開）
+#### Excel・スプレッドシート系 (4講座・約5.5時間)
+1. [Excel + AI活用](intermediate/excel-analysis-ai.md) (1.5時間)
+2. [Excel数式・AI](intermediate/excel-formulas-ai.md) (1時間)
+3. [Excel VBA・AI](intermediate/excel-vba-ai.md) (1.5時間)
+4. [Googleスプレッドシート + GAS活用](intermediate/06-spreadsheet-gas.md) (1.5時間)
 
-| 講座名 | 時間 | ファイル | 内容 |
-|--------|------|----------|------|
-| ワークフロー設計 | 1時間 | [advanced/09-workflow-design.md](advanced/09-workflow-design.md) | 業務プロセス全体の最適化 |
-| システム連携 | 1時間 | [advanced/10-system-integration.md](advanced/10-system-integration.md) | 複数ツールの組み合わせ |
-| チーム展開 | 1時間 | [advanced/11-team-deployment.md](advanced/11-team-deployment.md) | 組織内への展開方法 |
+#### データ分析・可視化 (2講座・約3時間)
+5. [データ分析・可視化](intermediate/07-data-analysis.md) (1.5時間)
+6. [CSV統合・分析](intermediate/14-csv-integration.md) (1.5時間)
 
-### 業種別実践講座
+#### マルチメディアAI (4講座・約6時間)
+7. [画像生成AI](intermediate/08-image-generation.md) (1.5時間)
+8. [音声AI](intermediate/09-audio-ai.md) (1.5時間)
+9. [動画AI](intermediate/10-video-ai.md) (1.5時間)
+10. [マルチメディアAI](intermediate/multimedia-ai.md) (1.5時間)
 
-| 講座名 | 時間 | ファイル | 内容 |
-|--------|------|----------|------|
-| 営業・マーケティング | 1時間 | [industry/sales-marketing.md](industry/sales-marketing.md) | 営業効率化とマーケ活用 |
-| 事務・管理部門 | 1時間 | [industry/admin-office.md](industry/admin-office.md) | 事務処理の自動化 |
-| 企画・クリエイティブ | 1時間 | [industry/creative-planning.md](industry/creative-planning.md) | 企画立案と創作支援 |
-| 技術・開発部門 | 1時間 | [industry/tech-development.md](industry/tech-development.md) | 開発業務での活用 |
+#### Python実行環境系 (3講座・約3時間)
+11. [Python in ChatGPT](intermediate/11-python-chatgpt.md) (1時間)
+12. [Python in Claude](intermediate/12-python-claude.md) (1時間)
+13. [Python in その他LLM](intermediate/13-python-other-llms.md) (1時間)
 
-## 推奨学習パス
+#### ファイル統合系 (3講座・約4.5時間)
+14. [画像統合・分析](intermediate/15-image-integration.md) (1.5時間)
+15. [スクリーンショット統合](intermediate/16-screenshot-integration.md) (1.5時間)
 
-### 初心者コース（10時間）
-1. 必須講座（0.5時間）
-2. 基礎講座 4つ（4時間）
-3. 中級講座から2つ（3時間）
-4. 業種別講座 1つ（1時間）
-5. 上級講座から1つ（1時間）
-6. 残り時間で復習・応用（0.5時間）
+### 上級レベル (8講座・約8時間)
 
-### 中級者コース（10時間）
-1. 必須講座（0.5時間）
-2. 基礎講座から必要な分（1-2時間）
-3. 中級講座 3つ（4.5時間）
-4. 上級講座 2つ（2時間）
-5. 業種別講座 1-2つ（1-2時間）
+#### ディープリサーチ系 (4講座・約4時間)
+1. [ディープリサーチ概要](advanced/14-deep-research-overview.md) (1時間)
+2. [手動リサーチ技術](advanced/15-manual-research.md) (1時間)
+3. [AIリサーチツール活用](advanced/16-ai-research-tools.md) (1時間)
+4. [リサーチプロンプト設計](advanced/17-research-prompts.md) (1時間)
 
-### 上級者コース（10時間）
-1. 必須講座（0.5時間）
-2. 中級講座から必要な分（1-2時間）
-3. 上級講座 3つ（3時間）
-4. 業種別講座 2-3つ（2-3時間）
-5. カスタマイズ・応用（2-3時間）
+#### LLMとWeb検索系 (4講座・約4時間)
+5. [LLM知識限界と検索補完](advanced/18-llm-knowledge-limits.md) (1時間)
+6. [RAG基礎](advanced/19-rag-basics.md) (1時間)
+7. [統合検索サービス活用](advanced/20-integrated-search.md) (1時間)
+8. [開発者向けRAG実装](advanced/21-rag-development.md) (1時間)
 
-## 学習目標
+### 業界別コース (4講座・約8時間)
+1. [営業・マーケティング](industry/sales-marketing.md) (2時間)
+2. [クリエイティブ・企画](industry/creative-planning.md) (2時間)
+3. [技術・開発](industry/tech-development.md) (2時間)
 
-### 基礎レベル完了時
-- AIツールの基本操作ができる
-- 簡単な業務効率化ができる
-- セキュリティを意識した使い方ができる
+## 🎯 学習パス推奨
 
-### 中級レベル完了時
-- 複雑なタスクを効率化できる
-- データ処理・分析に活用できる
-- 部署内での活用を推進できる
+### 初学者向けパス (約25時間)
+1. **基礎**: プロンプト基礎 → 文書作成自動化 → セキュリティ基礎
+2. **データ形式**: Markdown → JSON → HTML
+3. **実践**: Excel + AI → 画像生成AI
+4. **業界別**: 自分の業界に応じたコース
 
-### 上級レベル完了時
-- 業務プロセス全体を最適化できる
-- チームに展開・教育できる
-- 継続的な改善ができる
+### 開発者向けパス (約35時間)  
+1. **基礎**: プロンプト基礎 → 全データフォーマット系
+2. **プログラミング**: 全プログラミング基礎コース
+3. **Python**: 全Python実行環境系
+4. **高度**: 全ディープリサーチ系 → 全RAG系
 
-## 評価・フォローアップ
+### ビジネス活用パス (約30時間)
+1. **基礎**: プロンプト基礎 → 文書作成自動化
+2. **ツール**: Excel系 → GAS → データ分析
+3. **AI企業**: 全AI企業・技術系
+4. **業界**: 営業・マーケティング
 
-- 各講座終了時: 理解度チェック
-- 全体完了時: 実践課題
-- 受講後1ヶ月: フォローアップアンケート
-- 継続学習: [resources/updates.md](resources/updates.md)で最新情報提供
+## 📋 前提知識マップ
+
+### 基礎 → 中級の推奨パス
+- Markdown基礎 → 文書作成自動化の発展
+- JSON基礎 → API基礎 → データ分析
+- AI企業エコシステム → 各社サービス活用
+
+### 中級 → 上級の推奨パス
+- Python実行環境系 → RAG実装
+- データ分析 → ディープリサーチ
+- API基礎 → 統合検索サービス
+
+## 🔗 講座間の関連性
+
+### データフォーマット関連
+```
+Markdown基礎 → HTML基礎 → Web開発応用
+JSON基礎 → API基礎 → RAG実装
+XML基礎 → データ構造理解 → システム連携
+```
+
+### Python実行環境関連
+```
+Python in ChatGPT → Python in Claude → Python in その他LLM
+↓
+RAG基礎 → RAG実装
+```
+
+### ファイル統合関連
+```
+CSV統合 → 画像統合 → スクリーンショット統合
+↓
+マルチメディアAI → 統合検索サービス
+```
+
+### リサーチ関連
+```
+ディープリサーチ概要 → 手動リサーチ技術
+↓
+AIリサーチツール → リサーチプロンプト設計
+↓
+LLM知識限界 → RAG基礎 → 統合検索サービス → RAG実装
+```
+
+## 📊 難易度別学習時間
+
+| レベル | 講座数 | 合計時間 | 1日1時間換算 |
+|--------|--------|----------|--------------|
+| 基礎 | 16講座 | 約24時間 | 約3.5週間 |
+| 中級 | 18講座 | 約25時間 | 約3.5週間 |
+| 上級 | 8講座 | 約8時間 | 約1週間 |
+| **合計** | **42講座** | **約57時間** | **約8週間** |
+
+## 🎓 修了証明
+
+各レベル修了時の達成目標：
+
+### 基礎レベル修了
+- AIツールの基本的な使い方を習得
+- データフォーマットの理解
+- 基本的な自動化実装
+- AI企業・技術の全体像把握
+
+### 中級レベル修了  
+- 業務レベルのAI活用
+- データ分析・可視化
+- マルチメディア処理
+- プログラミング連携
+
+### 上級レベル修了
+- 高度なリサーチ技術
+- RAGシステムの理解・実装
+- カスタムAIソリューション開発
+
+## 📝 補助教材
+
+### 共通リソース
+- [用語集](resources/glossary.md)
+- [参考リンク集](resources/reference-links.md)
+- [トラブルシューティング](resources/troubleshooting.md)
+- [最新情報・アップデート](resources/updates.md)
+
+### アセスメント
+- [初級者向け評価](results/beginner.md)
+- [中級者向け評価](results/intermediate.md)
+- [上級者向け評価](results/advanced.md)
+- [Googleフォーム質問集](google-forms-questions.md)
+
+---
+
+**📞 サポート**: 質問・要望は各講座のissue欄まで  
+**🔄 更新頻度**: 月1回の定期更新 + 重要技術の随時追加
