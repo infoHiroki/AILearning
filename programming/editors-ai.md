@@ -1,0 +1,792 @@
+# AI時代のエディター活用（VS Code・Cursor）
+
+**所要時間**: 1時間  
+**レベル**: プログラミング基礎  
+**前提知識**: [AI基本操作](../basic/01-ai-basics.md)
+
+## 学習目標
+
+この講座を修了すると、以下ができるようになります：
+- VS CodeとCursorの基本操作と違いを理解できる
+- AI支援機能を効果的に活用できる
+- コード生成・補完・レビューをAIと協働で行える
+- ClaspとGoogle Apps Scriptの連携開発ができる
+- 実際の開発ワークフローを体験できる
+
+## 📋 目次
+
+1. [現代のエディターとAI](#現代のエディターとai)
+2. [VS Code + AI拡張機能](#vs-code--ai拡張機能)
+3. [Cursor完全ガイド](#cursor完全ガイド)
+4. [Clasp + GAS開発環境](#clasp--gas開発環境)
+5. [実践的な活用方法](#実践的な活用方法)
+6. [トラブルシューティング](#トラブルシューティング)
+
+---
+
+## 現代のエディターとAI
+
+### 🔄 開発環境の変化
+
+#### 従来の開発フロー
+```
+アイデア → 調査 → 設計 → コーディング → デバッグ → テスト
+```
+
+#### AI時代の開発フロー
+```
+アイデア → AI相談 → AI支援設計 → AI協働コーディング → AI支援デバッグ → AI支援テスト
+```
+
+### 💡 なぜエディターが重要か
+
+1. **生産性の向上**
+   - コード補完の精度向上
+   - エラー検出の自動化
+   - リファクタリング支援
+
+2. **学習効率の向上**
+   - リアルタイムでの解説
+   - ベストプラクティスの提案
+   - エラーの原因説明
+
+3. **品質向上**
+   - 自動コードレビュー
+   - セキュリティ問題の検出
+   - パフォーマンス最適化提案
+
+### 🎯 主要エディターの位置づけ（2025年版）
+
+| エディター | 特徴 | AI機能 | 適用対象 | コスト |
+|-----------|------|--------|----------|--------|
+| **VS Code** | 拡張性最高、無料 | 拡張機能で対応 | 汎用開発 | 無料 |
+| **Cursor** | AI特化設計 | ネイティブ統合 | AI協働開発 | 有料 |
+| **GitHub Copilot** | GitHub統合 | コード生成特化 | GitHub連携 | 有料 |
+| **Replit** | ブラウザ完結 | AI機能内蔵 | 学習・プロトタイプ | 一部有料 |
+
+---
+
+## VS Code + AI拡張機能
+
+### 📥 VS Codeのセットアップ
+
+#### 基本インストール
+1. **VS Code本体のインストール**
+   - 公式サイト: https://code.visualstudio.com
+   - 各OS版をダウンロード・インストール
+
+2. **日本語化**
+   - 拡張機能: Japanese Language Pack for Visual Studio Code
+   - インストール後、再起動で日本語UI
+
+#### 必須AI拡張機能
+
+##### 🤖 GitHub Copilot
+```
+機能: AIコード補完・生成
+価格: $10/月（学生・OSS開発者は無料）
+インストール: Extensions → "GitHub Copilot" で検索
+```
+
+**基本的な使い方**:
+- コメントを書くとコードを自動生成
+- Tab キーで提案を受諾
+- Alt + ] で次の提案を表示
+
+**実践例**:
+```javascript
+// ユーザー認証のための関数を作成
+function authenticateUser(username, password) {
+    // GitHub Copilotが以下のようなコードを提案
+    if (!username || !password) {
+        throw new Error('Username and password are required');
+    }
+    
+    // データベースでユーザーを検索
+    const user = database.findUser(username);
+    
+    // パスワードハッシュを比較
+    return bcrypt.compare(password, user.passwordHash);
+}
+```
+
+##### 🧠 Claude for VS Code (非公式)
+```
+機能: Claude APIとの統合
+価格: Claude API料金
+特徴: 長文コード分析、アーキテクチャ相談
+```
+
+##### 💬 ChatGPT - Genie AI
+```
+機能: ChatGPTとの統合
+価格: 一部無料、プレミアム機能は有料
+特徴: コード説明、バグ修正提案
+```
+
+### 🛠️ VS Code基本操作
+
+#### エディター基本操作
+```
+ファイル作成: Ctrl + N (Windows) / Cmd + N (Mac)
+ファイル保存: Ctrl + S / Cmd + S
+検索・置換: Ctrl + F / Cmd + F
+コマンドパレット: Ctrl + Shift + P / Cmd + Shift + P
+```
+
+#### AI活用のワークフロー
+
+1. **新規ファイル作成**
+   ```
+   1. Ctrl + N で新規ファイル
+   2. 言語を選択（右下の言語表示をクリック）
+   3. コメントで要件を記述
+   4. GitHub Copilotが提案するコードを確認
+   ```
+
+2. **既存コードの改善**
+   ```
+   1. 改善したいコードを選択
+   2. 右クリック → "Ask Copilot"
+   3. 改善提案を確認・適用
+   ```
+
+3. **エラー解決**
+   ```
+   1. エラーが発生した行にカーソル
+   2. 電球アイコンをクリック
+   3. AI提案の修正を確認
+   ```
+
+---
+
+## Cursor完全ガイド
+
+### 🚀 Cursorとは
+
+**Cursor**は「AI-first Code Editor」として設計された次世代エディター。VS Codeベースだが、AI機能が深く統合されている。
+
+#### 主要な違い
+
+| 機能 | VS Code + 拡張 | Cursor |
+|------|---------------|--------|
+| **AI統合** | 拡張機能で追加 | ネイティブ統合 |
+| **会話型AI** | 限定的 | フル対応 |
+| **コンテキスト理解** | ファイル単位 | プロジェクト全体 |
+| **カスタマイズ** | 高い | AI最適化済み |
+
+### 📥 Cursorのセットアップ
+
+#### インストール・初期設定
+1. **Cursorのダウンロード**
+   - 公式サイト: https://cursor.sh
+   - 各OS版をダウンロード
+
+2. **AI機能の有効化**
+   - アカウント作成・ログイン
+   - 有料プラン: $20/月（GPT-4使用時）
+   - 無料プラン: 制限付きで利用可能
+
+3. **VS Codeからの移行**
+   - 設定・拡張機能の自動インポート
+   - ショートカットキーの継承
+
+### 🎯 Cursorの主要機能
+
+#### 1. Chat機能（Ctrl + L）
+```
+使用例:
+"このReactコンポーネントにダークモード対応を追加して"
+"データベース接続エラーを解決する方法を教えて"
+"この関数のパフォーマンスを改善して"
+```
+
+#### 2. Composer機能（Ctrl + I）
+```
+機能: プロジェクト全体を理解したコード生成
+使用例:
+- "ユーザー認証システム全体を作成"
+- "このAPIエンドポイントに対応するフロントエンドを作成"
+- "テストファイルを生成"
+```
+
+#### 3. Cmd+K（インライン編集）
+```
+選択したコードに対する直接的な修正・改善
+- "このループを最適化"
+- "エラーハンドリングを追加"
+- "コメントを追加"
+```
+
+### 💼 実践的な活用方法
+
+#### プロジェクト開始時
+```
+1. Cursor起動
+2. "新しいReact + TypeScript + Tailwindプロジェクトを作成"
+3. ファイル構造の自動生成
+4. 基本設定ファイルの作成
+```
+
+#### 開発中の活用
+```
+1. 機能要件をChatで相談
+2. Composerで大まかなコード生成
+3. Cmd+Kで細かい調整
+4. エラー発生時はChatで解決相談
+```
+
+---
+
+## Clasp + GAS開発環境
+
+### 🔧 Claspとは
+
+**Clasp**（Command Line Apps Script Projects）は、Google Apps Scriptをローカル環境で開発するためのコマンドラインツール。VS CodeやCursorでGASを開発できる。
+
+#### 従来のGAS開発 vs Clasp開発
+
+| 項目 | Web Editor | Clasp + エディター |
+|------|------------|-------------------|
+| **開発環境** | ブラウザのみ | ローカルエディター |
+| **AI支援** | 限定的 | フル活用可能 |
+| **バージョン管理** | 限定的 | Git完全対応 |
+| **デバッグ** | 基本的 | 高度なデバッグ |
+| **チーム開発** | 困難 | 標準的な開発フロー |
+
+### 📥 Clasp環境構築
+
+#### 1. Node.js のインストール
+```bash
+# Node.js公式サイトからインストール
+# または Homebrew (Mac) の場合
+brew install node
+
+# バージョン確認
+node --version
+npm --version
+```
+
+#### 2. Clasp のインストール
+```bash
+npm install -g @google/clasp
+
+# インストール確認
+clasp --version
+```
+
+#### 3. Googleアカウント認証
+```bash
+clasp login
+# ブラウザが開くのでGoogleアカウントでログイン
+```
+
+#### 4. VS Code拡張機能
+```
+必須拡張機能:
+- Google Apps Script
+- TypeScript and JavaScript Language Features
+- JavaScript (ES6) code snippets
+
+推奨拡張機能:
+- Prettier - Code formatter
+- ESLint
+- GitHub Copilot
+```
+
+### 🚀 GASプロジェクト開発フロー
+
+#### 新規プロジェクト作成
+```bash
+# 1. ローカルディレクトリ作成
+mkdir my-gas-project
+cd my-gas-project
+
+# 2. 新規GASプロジェクト作成
+clasp create "My First GAS Project"
+# プロジェクトタイプを選択: standalone/sheets/docs/slides/forms
+
+# 3. VS Codeで開く
+code .
+```
+
+#### 既存プロジェクトのクローン
+```bash
+# GASプロジェクトIDを取得してクローン
+clasp clone [SCRIPT_ID]
+```
+
+#### 基本的な開発サイクル
+```bash
+# 1. コード編集（VS Code/Cursorで）
+# 2. GASにアップロード
+clasp push
+
+# 3. GASから最新版をダウンロード
+clasp pull
+
+# 4. ブラウザでGASエディターを開く
+clasp open
+```
+
+### 💡 AI支援GAS開発の実践
+
+#### TypeScript活用
+```typescript
+// appsscript.json でTypeScriptを有効化
+{
+  "timeZone": "Asia/Tokyo",
+  "dependencies": {},
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8"
+}
+
+// tsconfig.json 設定例
+{
+  "compilerOptions": {
+    "lib": ["ES6"],
+    "target": "ES6"
+  },
+  "include": ["**/*.ts"]
+}
+```
+
+#### AI支援コード生成例
+```typescript
+// コメントでAIに指示
+// スプレッドシートから顧客データを取得し、メール送信する関数
+
+function sendCustomerEmails() {
+  // GitHub CopilotやCursorが以下のようなコードを生成
+  const sheet = SpreadsheetApp.getActiveSheet();
+  const data = sheet.getDataRange().getValues();
+  
+  // ヘッダー行をスキップして各行を処理
+  for (let i = 1; i < data.length; i++) {
+    const [name, email, message] = data[i];
+    
+    if (email && message) {
+      MailApp.sendEmail({
+        to: email,
+        subject: `${name}様へのご連絡`,
+        body: message
+      });
+    }
+  }
+}
+```
+
+#### 実用的なGAS例：自動化スクリプト
+
+**1. スプレッドシート→Slack通知**
+```typescript
+// AIプロンプト: "スプレッドシートの新規データをSlackに通知する関数を作成"
+
+function notifySlackOnNewData() {
+  const sheet = SpreadsheetApp.getActiveSheet();
+  const lastRow = sheet.getLastRow();
+  const newData = sheet.getRange(lastRow, 1, 1, sheet.getLastColumn()).getValues()[0];
+  
+  const slackWebhookUrl = 'YOUR_SLACK_WEBHOOK_URL';
+  const message = {
+    'text': `新しいデータが追加されました: ${newData.join(', ')}`
+  };
+  
+  UrlFetchApp.fetch(slackWebhookUrl, {
+    'method': 'POST',
+    'contentType': 'application/json',
+    'payload': JSON.stringify(message)
+  });
+}
+```
+
+**2. Gmail自動整理**
+```typescript
+// AIプロンプト: "特定の条件のGmailを自動でラベル分けする関数"
+
+function organizeEmails() {
+  const threads = GmailApp.search('is:unread', 0, 50);
+  
+  threads.forEach(thread => {
+    const messages = thread.getMessages();
+    const firstMessage = messages[0];
+    const subject = firstMessage.getSubject();
+    const sender = firstMessage.getFrom();
+    
+    // AIが条件分岐ロジックを生成
+    if (subject.includes('請求書')) {
+      thread.addLabel(GmailApp.getUserLabelByName('請求書'));
+    } else if (sender.includes('noreply@')) {
+      thread.addLabel(GmailApp.getUserLabelByName('自動送信'));
+    }
+    
+    thread.markAsRead();
+  });
+}
+```
+
+### 🔄 高度な開発パターン
+
+#### ライブラリ活用
+```typescript
+// 外部ライブラリの活用（AI支援で簡単に）
+// "moment.jsのような日付処理をGASで実装"
+
+class DateHelper {
+  static formatDate(date: Date, format: string): string {
+    // AIが日付フォーマット関数を生成
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    
+    return format
+      .replace('YYYY', String(year))
+      .replace('MM', month)
+      .replace('DD', day);
+  }
+}
+```
+
+#### エラーハンドリング・ログ
+```typescript
+// AIプロンプト: "堅牢なエラーハンドリングとログ機能を追加"
+
+function robustFunction() {
+  try {
+    // メイン処理
+    console.log('処理開始:', new Date());
+    
+    // 処理内容...
+    
+    console.log('処理完了:', new Date());
+  } catch (error) {
+    // エラーログをスプレッドシートに記録
+    const errorSheet = SpreadsheetApp.openById('ERROR_LOG_SHEET_ID').getActiveSheet();
+    errorSheet.appendRow([
+      new Date(),
+      'robustFunction',
+      error.toString(),
+      error.stack
+    ]);
+    
+    // 管理者にメール通知
+    MailApp.sendEmail(
+      'admin@example.com',
+      'GASエラー通知',
+      `エラーが発生しました: ${error.toString()}`
+    );
+    
+    throw error; // エラーを再発生
+  }
+}
+```
+
+### 🧪 テスト・デバッグ
+
+#### ローカルでのテスト
+```typescript
+// テスト用関数（AIで生成）
+function testCustomerEmailFunction() {
+  // モックデータでテスト
+  const mockSheet = SpreadsheetApp.create('Test Sheet');
+  mockSheet.getActiveSheet().getRange('A1:C3').setValues([
+    ['名前', 'メール', 'メッセージ'],
+    ['田中太郎', 'tanaka@example.com', 'テストメッセージ1'],
+    ['佐藤花子', 'sato@example.com', 'テストメッセージ2']
+  ]);
+  
+  // 実際の関数をテスト実行
+  console.log('テスト開始');
+  sendCustomerEmails();
+  console.log('テスト完了');
+}
+```
+
+#### デバッグ手法
+```typescript
+// デバッグ用のログ関数
+function debugLog(message: string, data?: any) {
+  console.log(`[DEBUG] ${new Date().toISOString()}: ${message}`);
+  if (data) {
+    console.log(JSON.stringify(data, null, 2));
+  }
+}
+
+// 使用例
+function processData() {
+  debugLog('データ処理開始');
+  const data = getSpreadsheetData();
+  debugLog('取得したデータ', data);
+  
+  // 処理...
+  
+  debugLog('処理完了');
+}
+```
+
+### 📦 デプロイ・公開
+
+#### バージョン管理
+```bash
+# 新しいバージョンを作成
+clasp version "v1.0.0 初回リリース"
+
+# デプロイ
+clasp deploy --versionNumber 1 --description "本番環境デプロイ"
+```
+
+#### 設定ファイル管理
+```json
+// .clasp.json - プロジェクト設定
+{
+  "scriptId": "your-script-id",
+  "rootDir": "./src"
+}
+
+// appsscript.json - GAS設定
+{
+  "timeZone": "Asia/Tokyo",
+  "dependencies": {
+    "libraries": []
+  },
+  "webapp": {
+    "access": "ANYONE_ANONYMOUS",
+    "executeAs": "USER_DEPLOYING"
+  }
+}
+```
+
+---
+
+## 実践的な活用方法
+
+### 🎯 レベル別活用法
+
+#### 初心者レベル
+- **学習支援**: コードの意味を質問
+- **エラー解決**: エラーメッセージの解釈
+- **基本文法**: 言語の文法を質問
+
+```
+実践例:
+"このJavaScriptのコードは何をしているの？"
+"TypeError: Cannot read property 'map' of undefined の意味は？"
+"Pythonでリストの要素を削除する方法は？"
+```
+
+#### 中級者レベル  
+- **設計相談**: アーキテクチャの検討
+- **最適化**: パフォーマンス改善
+- **ベストプラクティス**: コード品質向上
+
+```
+実践例:
+"このAPIの設計について、RESTfulな観点から改善点は？"
+"このSQL文のパフォーマンスを改善して"
+"Reactのstateの管理で、より良い方法は？"
+```
+
+#### 上級者レベル
+- **複雑な実装**: 高度な機能の実装
+- **リファクタリング**: 大規模なコード改善
+- **技術選定**: 技術的な意思決定支援
+
+```
+実践例:
+"マイクロサービス間のデータ一貫性を保つ方法"
+"このレガシーコードをモダンな設計にリファクタリング"
+"gRPCとRESTの選択基準について"
+```
+
+### 🔄 効率的なワークフロー
+
+#### 朝の開発開始時
+```
+1. 前日の作業内容をAIに説明
+2. 今日のタスクの相談
+3. 実装方針の確認
+4. 作業開始
+```
+
+#### 機能実装時
+```
+1. 要件をAIと整理
+2. 設計・アーキテクチャの相談
+3. コード生成・実装
+4. テスト作成
+5. レビュー・改善
+```
+
+#### 問題発生時
+```
+1. エラー・問題の詳細をAIに相談
+2. 複数の解決策を検討
+3. 最適な解決策を選択・実装
+4. 再発防止策の検討
+```
+
+### 📊 プロジェクト種別の活用法
+
+#### Webアプリケーション開発
+```
+推奨ツール: Cursor
+理由: フロントエンド・バックエンドの統合開発に適している
+
+典型的な流れ:
+1. "React + Node.js + MongoDB の Todo アプリを作成"
+2. プロジェクト構造の自動生成
+3. API設計の相談
+4. UI/UXの実装
+5. データベース連携
+```
+
+#### データ分析・機械学習
+```
+推奨ツール: VS Code + Jupyter拡張
+理由: データ分析に必要な可視化・ノートブック機能
+
+典型的な流れ:
+1. データの探索的分析をAIと相談
+2. 前処理コードの生成
+3. モデル選択・実装
+4. 評価・可視化
+```
+
+#### 自動化スクリプト
+```
+推奨ツール: VS Code または Cursor
+理由: 短時間での実装に適している
+
+典型的な流れ:
+1. "Excel ファイルを CSV に一括変換するスクリプト"
+2. 要件の詳細化
+3. コード生成・テスト
+4. エラーハンドリング追加
+```
+
+---
+
+## トラブルシューティング
+
+### ❌ よくある問題と解決法
+
+#### 1. AI機能が動作しない
+**症状**: コード補完や提案が表示されない
+
+**解決方法**:
+```
+VS Code:
+1. GitHub Copilotの認証状況確認
+2. 拡張機能の有効化確認
+3. VS Code再起動
+
+Cursor:
+1. ログイン状況確認
+2. API制限の確認
+3. インターネット接続確認
+```
+
+#### 2. 生成されるコードが期待と違う
+**症状**: AIの提案が不適切・不正確
+
+**解決方法**:
+```
+1. より具体的なコメント・指示を記述
+2. プロジェクトの背景情報を追加
+3. 期待する出力例を示す
+4. 段階的に詳細化して指示
+```
+
+#### 3. パフォーマンスが遅い
+**症状**: エディターの動作が重い
+
+**解決方法**:
+```
+1. 不要な拡張機能を無効化
+2. 大きなファイルを分割
+3. AI機能の設定を調整
+4. キャッシュクリア
+```
+
+### 🛡️ セキュリティ・プライバシー対策
+
+#### コードの取り扱い
+```
+注意点:
+- 機密性の高いコードはAIに送信しない
+- APIキー・パスワードは除外
+- 社内規定に従った利用
+
+対策:
+- .gitignore設定の徹底
+- 環境変数の活用
+- コードレビューの実施
+```
+
+#### ライセンス・著作権
+```
+確認事項:
+- 生成されたコードのライセンス
+- オープンソースコードの引用
+- 商用利用の可否
+
+対策:
+- 利用規約の定期確認
+- 生成コードの検証
+- 独自性の確保
+```
+
+---
+
+## 実践演習
+
+### 演習1: 基本セットアップ
+**目標**: 開発環境の構築と基本操作の習得
+
+**手順**:
+1. VS Code または Cursor のインストール
+2. AI拡張機能の設定
+3. 簡単なプログラムの作成
+4. AI支援機能の体験
+
+### 演習2: Webアプリケーション作成
+**目標**: AI協働での実践的な開発体験
+
+**課題**:
+1. 簡単なTo-doアプリの要件定義
+2. AIとの技術選定相談
+3. フロントエンド・バックエンドの実装
+4. テスト・デバッグ
+
+### 演習3: 既存コードの改善
+**目標**: リファクタリング・最適化スキルの習得
+
+**課題**:
+1. 提供されたレガシーコードの分析
+2. 問題点の特定
+3. AIとの改善方針相談
+4. 段階的なリファクタリング実行
+
+---
+
+## まとめ
+
+AI時代のエディター活用は、単なるツールの使い方を超えて、**AI との協働開発スタイル**の習得が重要です。
+
+### 🎯 重要なポイント
+- **目的に応じたツール選択**: VS Code vs Cursor
+- **効果的なAI相談**: 具体的で明確な指示
+- **セキュリティ意識**: 機密情報の適切な取り扱い
+- **継続的学習**: AI機能の進化への対応
+
+### 🚀 次のステップ
+1. 実際の開発プロジェクトでの活用
+2. チーム開発での協働パターンの確立
+3. 最新AI機能の継続的なキャッチアップ
+
+---
+
+**次の講座**: 
+- [Git・GitHub基礎](git-github.md)
+- [ターミナル・CLI基礎](terminal-cli.md)
+- [API活用基礎](api-basics.md)
