@@ -14,6 +14,109 @@
 
 ---
 
+## VBAとは
+
+### VBA（Visual Basic for Applications）の概要
+
+**VBA**は、Microsoft Officeアプリケーション（Excel、Word、PowerPointなど）を自動化するためのプログラミング言語です。
+
+**主な特徴**：
+- **マクロの作成**: 繰り返し作業を自動化
+- **カスタム関数**: 独自の計算式を作成
+- **ユーザーフォーム**: 対話的なインターフェースを構築
+- **他のアプリケーションとの連携**: WordやOutlookとの連携も可能
+
+### VBAエディタの起動方法
+
+**Excel 2016以降**:
+1. `開発`タブ → `Visual Basic`をクリック
+2. または`Alt + F11`キーを押す
+
+**開発タブが表示されない場合**:
+1. `ファイル` → `オプション` → `リボンのユーザー設定`
+2. `開発`にチェックを入れる → `OK`
+
+### VBAエディタの基本構成
+
+**主要な画面要素**：
+- **プロジェクトエクスプローラー**: ワークブックとシートの一覧
+- **コードウィンドウ**: VBAコードを記述する場所
+- **プロパティウィンドウ**: オブジェクトの設定を表示
+- **イミディエイトウィンドウ**: テスト用コードの実行とデバッグ
+
+### マクロの作成と実行
+
+#### 1. 新しいマクロの作成
+```vb
+Sub HelloWorld()
+    MsgBox "Hello, World!"
+End Sub
+```
+
+#### 2. マクロの実行方法
+- **VBAエディタから**: `F5`キーまたは`実行`ボタン
+- **Excelから**: `開発`タブ → `マクロ` → 実行したいマクロを選択
+
+#### 3. マクロの保存
+- ファイル形式を「Excel マクロ有効ブック（.xlsm）」で保存
+
+### VBAの基本構文
+
+#### 変数の宣言
+```vb
+Dim 変数名 As データ型
+
+' 例
+Dim name As String
+Dim age As Integer
+Dim price As Double
+```
+
+#### 主要なデータ型
+- **String**: 文字列
+- **Integer**: 整数（-32,768 ～ 32,767）
+- **Long**: 長整数
+- **Double**: 小数点数
+- **Boolean**: True/False
+- **Date**: 日付・時刻
+
+#### セルの操作
+```vb
+' セルに値を設定
+Range("A1").Value = "テスト"
+Cells(1, 1).Value = "テスト"  ' 行1、列1（A1）
+
+' セルの値を取得
+Dim cellValue As String
+cellValue = Range("A1").Value
+```
+
+#### 条件分岐
+```vb
+If 条件 Then
+    ' 条件が真の場合の処理
+ElseIf 別の条件 Then
+    ' 別の条件が真の場合の処理
+Else
+    ' どの条件も満たさない場合の処理
+End If
+```
+
+#### 繰り返し処理
+```vb
+' For文
+For i = 1 To 10
+    Cells(i, 1).Value = i
+Next i
+
+' For Each文
+For Each cell In Range("A1:A10")
+    cell.Value = cell.Value * 2
+Next cell
+```
+
+---
+
 ## VBA自動生成の基本
 
 ### 基本的なVBA生成プロンプト

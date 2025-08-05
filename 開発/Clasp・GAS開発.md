@@ -2,7 +2,7 @@
 
 **所要時間**: 1.5時間  
 **レベル**: プログラミング基礎〜中級  
-**前提知識**: [ターミナル・CLI基礎](TerminalCLI.md), [EditorAI](EditorAI.md)
+**前提知識**: [ターミナル・CLI基礎](TerminalCLI.md), [テキストエディターの活用](テキストエディターの活用.md)
 
 ## 学習目標
 
@@ -619,6 +619,6 @@ Clasp + GAS開発により、従来のブラウザ制約を超えた本格的な
 ---
 
 **関連講座**: 
-- [EditorAI](EditorAI.md)
-- [API基礎](API基礎.md)
+- [テキストエディターの活用](テキストエディターの活用.md)
+- [APIとは](APIとは.md)
 - [Git・GitHub](Git・GitHub.md)
