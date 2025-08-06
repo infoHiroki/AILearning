@@ -14,6 +14,7 @@
 
 1. [主要AIリサーチツール](#主要aiリサーチツール)
    - [Genspark](Genspark.md): 包括的リサーチレポート自動生成
+   - [Perplexity AI](Perplexity%20AI.md): 対話型AI検索エンジン
 2. [Perplexity AI活用法](#perplexity-ai活用法)
 3. [Consensus・Elicit等の学術ツール](#consensuselicit等の学術ツール)
 4. [検索結果の検証・評価](#検索結果の検証評価)
