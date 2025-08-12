@@ -135,6 +135,8 @@
         .section-5 { background: linear-gradient(135deg, #f3e5f5 0%, #f5f5f5 100%); }
         .section-6 { background: linear-gradient(135deg, #fff3e0 0%, #f5f5f5 100%); }
         .section-7 { background: linear-gradient(135deg, #e8f5e8 0%, #f5f5f5 100%); }
+        .section-8 { background: #f8f9fa; }
+        .section-9 { background: linear-gradient(135deg, #fff9c4 0%, #f5f5f5 100%); }
 
         /* 要素共通スタイル */
         .element {
@@ -311,6 +313,8 @@
         <div class="nav-dot" data-section="5"></div>
         <div class="nav-dot" data-section="6"></div>
         <div class="nav-dot" data-section="7"></div>
+        <div class="nav-dot" data-section="8"></div>
+        <div class="nav-dot" data-section="9"></div>
     </div>
 
     <!-- メインコンテンツ -->
@@ -327,7 +331,7 @@
             <!-- JavaScript で動的に生成 -->
         </section>
 
-        <!-- セクション3: 悪い例→良い例 -->
+        <!-- セクション3: シンプルなプロンプト -->
         <section class="section section-3" id="section-2">
             <!-- JavaScript で動的に生成 -->
         </section>
@@ -342,18 +346,28 @@
             <!-- JavaScript で動的に生成 -->
         </section>
 
-        <!-- セクション6: 改善プロセス -->
+        <!-- セクション6: 悪い例→良い例 -->
         <section class="section section-6" id="section-5">
             <!-- JavaScript で動的に生成 -->
         </section>
 
-        <!-- セクション7: 注意点 -->
+        <!-- セクション7: 改善プロセス -->
         <section class="section section-7" id="section-6">
             <!-- JavaScript で動的に生成 -->
         </section>
 
-        <!-- セクション8: まとめ -->
-        <section class="section section-1" id="section-7">
+        <!-- セクション8: 注意点 -->
+        <section class="section section-8" id="section-7">
+            <!-- JavaScript で動的に生成 -->
+        </section>
+
+        <!-- セクション9: 効果的な使い方 -->
+        <section class="section section-9" id="section-8">
+            <!-- JavaScript で動的に生成 -->
+        </section>
+
+        <!-- セクション10: まとめ -->
+        <section class="section section-1" id="section-9">
             <!-- JavaScript で動的に生成 -->
         </section>
     </div>
@@ -366,32 +380,32 @@
                 title: "導入",
                 elements: [
                     { type: 'title', content: '🤖 AI時代の必須スキル<br>プロンプトの基礎を学ぼう！' },
-                    { type: 'explanation', content: 'みなさん、こんにちは！<br>今回はAIへの指示の出し方<br>プロンプトの基礎について学んでいきましょう' }
+                    { type: 'explanation', content: 'みなさん、こんにちは<br>今回はエーアイへの指示の出し方<br>プロンプトの基礎について学んでいきましょう' }
                 ]
             },
             {
                 title: "基本原則",
                 elements: [
                     { type: 'principle', content: 'プロンプト作成の<br>最も大切な考え方' },
-                    { type: 'highlight', content: '① シンプルに始める<br>② 結果を見ながら育てる' },
-                    { type: 'explanation', content: 'この2つを覚えておけば<br>誰でも効果的なプロンプトが作れます' },
-                    { type: 'explanation', content: '最近のAIはとても賢いので<br>複雑な指示じゃなくても<br>意外とちゃんと理解してくれます' }
+                    { type: 'highlight', content: 'たった2つです<br><br>① シンプルに始める<br>② 結果を見ながら育てる' },
+                    { type: 'explanation', content: 'これは本当に大切なので<br>よく覚えておいてくださいね' },
+                    { type: 'explanation', content: '育てるというのは<br>プロンプトを改善していくことを指しています' },
+                    { type: 'highlight', content: '「シンプルに始めて、結果を見ながら育てる」<br><br>この2つを覚えてください' }
                 ]
             },
             {
-                title: "悪い例→良い例",
+                title: "シンプルなプロンプト",
                 elements: [
-                    { type: 'principle', content: '❌ 悪い例から学ぼう' },
-                    { type: 'example-bad', content: '「良い文章を書いて」<br><br>→ これでは何を書いていいか分からない...' },
-                    { type: 'arrow', content: '⬇️ 改善すると...' },
-                    { type: 'example-good', content: '「新入社員への歓迎メッセージを書いてください。<br>4月に入社する新卒10名に向けて、<br>会社を好きになってもらえるような、<br>温かいメッセージを200文字くらいでお願いします」' },
-                    { type: 'explanation', content: 'ぐっと具体的になりましたね！<br>これなら AIも理解しやすくなります' }
+                    { type: 'principle', content: '📧 シンプルな指示の出し方' },
+                    { type: 'explanation', content: '実は多くの場合<br>とてもシンプルなプロンプトで十分です' },
+                    { type: 'example-good', content: '「営業メールを書いてください。<br>相手はエービーシー商事の田中部長で、<br>来週の会議について連絡したいです」' },
+                    { type: 'explanation', content: 'これだけでも、エーアイは<br>ちゃんとメールを作ってくれます' }
                 ]
             },
             {
                 title: "5つの要素（導入）",
                 elements: [
-                    { type: 'principle', content: '🛠️ 詳しく指示したい時の<br>5つの要素' },
+                    { type: 'principle', content: '🛠️ 詳しく伝えたい時の<br>5つの要素' },
                     { type: 'explanation', content: 'もっと具体的な結果が欲しければ<br>以下の要素を意識してみましょう' },
                     { type: 'highlight', content: 'でも、全部使う必要はありません<br>必要なものだけ使えばOKです！' }
                 ]
@@ -404,6 +418,16 @@
                     { type: 'numbered-item', content: '<div class="number-circle">3</div><div><strong>指示</strong><br>何をしてほしいのか、はっきり伝える</div>' },
                     { type: 'numbered-item', content: '<div class="number-circle">4</div><div><strong>形式</strong><br>箇条書きか、文章か、好みの形を指定</div>' },
                     { type: 'numbered-item', content: '<div class="number-circle">5</div><div><strong>注意点</strong><br>特に気をつけてほしいことを追加</div>' }
+                ]
+            },
+            {
+                title: "悪い例→良い例",
+                elements: [
+                    { type: 'principle', content: '❌ 良い例と悪い例' },
+                    { type: 'example-bad', content: '「良い文章を書いて」<br><br>→ これでは何を書いていいか分からない...' },
+                    { type: 'arrow', content: '⬇️ 改善すると...' },
+                    { type: 'example-good', content: '「新入社員への歓迎メッセージを書いてください。<br>4月に入社する新卒10名に向けて、<br>会社を好きになってもらえるような、<br>温かいメッセージを200文字くらいでお願いします」' },
+                    { type: 'explanation', content: 'ぐっと具体的になりましたね' }
                 ]
             },
             {
@@ -421,21 +445,32 @@
                 title: "注意点",
                 elements: [
                     { type: 'principle', content: '⚠️ 大切な注意点' },
-                    { type: 'explanation', content: 'AIを使うときに<br>覚えておいてほしいことがあります' },
-                    { type: 'explanation', content: '① AIが出した情報は必ず確認<br>特に数字や事実関係は要注意' },
+                    { type: 'explanation', content: 'エーアイを使うときに<br>覚えておいてほしいことがあります' },
+                    { type: 'explanation', content: '① エーアイが出した情報は必ず確認<br>特に数字や事実関係は要注意' },
                     { type: 'explanation', content: '② 2024年より新しい情報は<br>持っていないことが多い' },
-                    { type: 'explanation', content: '③ 最終的な判断は必ず人間が行う<br>AIはあくまでサポート役' },
+                    { type: 'explanation', content: '③ 最終的な判断は必ず人間が行う<br>エーアイはあくまでサポート役' },
                     { type: 'warning', content: '⚠️ 絶対に守ってください<br><br>会社の機密情報や個人情報は<br>絶対に入力しない<br><br>これだけは必ず守ってください' }
+                ]
+            },
+            {
+                title: "効果的な使い方",
+                elements: [
+                    { type: 'principle', content: '💡 効果的に使うコツ' },
+                    { type: 'highlight', content: '① 完璧を求めすぎない<br>最初は60点でも、使いながら改善' },
+                    { type: 'highlight', content: '② 具体例を示す<br>「こんな感じで」と例を見せる' },
+                    { type: 'highlight', content: '③ 結果を次に活かす<br>うまくいったプロンプトは保存' }
                 ]
             },
             {
                 title: "まとめ",
                 elements: [
-                    { type: 'highlight', content: '💡 成功のコツ<br><br>① 完璧を求めすぎない（60点から始める）<br>② 具体例を示す<br>③ うまくいったプロンプトは保存' },
-                    { type: 'title', content: '🎯 重要ポイント' },
-                    { type: 'highlight', content: '「シンプルに始めて、結果を見ながら育てる」<br><br>これさえ覚えておけば大丈夫！' },
+                    { type: 'title', content: '今日の内容をまとめます' },
+                    { type: 'highlight', content: '「シンプルに始めて、結果を見ながら育てる」<br><br>この方法を使えば<br>誰でも効果的なプロンプトが作れます' },
+                    { type: 'title', content: 'お疲れさまでした！' },
+                    { type: 'explanation', content: '今日学んだことを<br>ぜひ実際に試してみてくださいね' },
+                    { type: 'highlight', content: '最後にもう一度だけ繰り返させてください<br><br>「シンプルに始めて、結果を見ながら育てる」<br>これさえ覚えておけば大丈夫です' },
                     { type: 'warning', content: 'そして、機密情報は絶対に入力しない<br><br>この2つを忘れないでくださいね' },
-                    { type: 'title', content: '🎉 お疲れさまでした！<br><br>今日学んだことを<br>ぜひ実際に試してみてくださいね' }
+                    { type: 'title', content: 'それでは、プロンプト基礎の説明は以上です<br>ありがとうございました' }
                 ]
             }
         ];
