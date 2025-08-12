@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロンプト基礎 - インタラクティブLP</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 固定ヘッダー */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .header .subtitle {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* プログレスバー */
+        .progress-header {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            z-index: 999;
+            backdrop-filter: blur(5px);
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .progress-text {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* サイドナビゲーション */
+        .side-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(102, 126, 234, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: #667eea;
+            transform: scale(1.3);
+        }
+
+        /* メインコンテンツ */
+        .main-content {
+            margin-top: 120px; /* ヘッダー分の余白 */
+        }
+
+        /* セクション共通スタイル */
+        .section {
+            min-height: 100vh;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* セクション別背景 */
+        .section-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .section-2 { background: #f8f9fa; }
+        .section-3 { background: linear-gradient(135deg, #e3f2fd 0%, #f5f5f5 100%); }
+        .section-4 { background: #ffffff; }
+        .section-5 { background: linear-gradient(135deg, #f3e5f5 0%, #f5f5f5 100%); }
+        .section-6 { background: linear-gradient(135deg, #fff3e0 0%, #f5f5f5 100%); }
+        .section-7 { background: linear-gradient(135deg, #e8f5e8 0%, #f5f5f5 100%); }
+
+        /* 要素共通スタイル */
+        .element {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .element.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* タイトル要素 */
+        .element.title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .section-1 .element.title { color: white; }
+        .element.title { color: #667eea; }
+
+        /* 原則要素 */
+        .element.principle {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 2rem;
+            color: #764ba2;
+            border-left: 8px solid #667eea;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* 説明要素 */
+        .element.explanation {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 25px 35px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.4rem;
+            color: #555;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* ハイライト要素 */
+        .element.highlight {
+            background: linear-gradient(45deg, #e3f2fd, #fff);
+            border: 3px solid #2196f3;
+            padding: 35px;
+            border-radius: 20px;
+            font-size: 1.6rem;
+            color: #0d47a1;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.2);
+        }
+
+        /* 悪い例 */
+        .element.example-bad {
+            background: linear-gradient(45deg, #ffebee, #fff);
+            border-left: 8px solid #f44336;
+            padding: 30px;
+            border-radius: 15px;
+            font-size: 1.4rem;
+            color: #c62828;
+            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.2);
+        }
+
+        /* 良い例 */
+        .element.example-good {
+            background: linear-gradient(45deg, #e8f5e8, #fff);
+            border-left: 8px solid #4caf50;
+            padding: 30px;
+            border-radius: 15px;
+            font-size: 1.4rem;
+            color: #2e7d32;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+        }
+
+        /* 矢印 */
+        .element.arrow {
+            font-size: 3rem;
+            color: #ff9800;
+            text-align: center;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+
+        /* 5つの要素 */
+        .element.numbered-item {
+            background: linear-gradient(45deg, #fff3e0, #fff);
+            border-left: 8px solid #ff9800;
+            padding: 25px;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            color: #e65100;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.2);
+        }
+
+        .number-circle {
+            background: #ff9800;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* 警告要素 */
+        .element.warning {
+            background: linear-gradient(45deg, #fff3e0, #fff);
+            border: 3px solid #ff5722;
+            padding: 35px;
+            border-radius: 20px;
+            font-size: 1.5rem;
+            color: #d84315;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 8px 25px rgba(255, 87, 34, 0.2);
+        }
+
+
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .element.title { font-size: 2rem; }
+            .element.principle { font-size: 1.5rem; padding: 25px; }
+            .side-nav { display: none; }
+            .controls { bottom: 20px; }
+            .btn { padding: 12px 20px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 固定ヘッダー -->
+    <div class="header">
+        <h1>🎯 プロンプト基礎</h1>
+    </div>
+
+    <!-- プログレスバー -->
+    <div class="progress-header">
+        <span class="progress-text" id="progressText">1 / 36</span>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+
+    <!-- サイドナビゲーション -->
+    <div class="side-nav" id="sideNav">
+        <div class="nav-dot active" data-section="0"></div>
+        <div class="nav-dot" data-section="1"></div>
+        <div class="nav-dot" data-section="2"></div>
+        <div class="nav-dot" data-section="3"></div>
+        <div class="nav-dot" data-section="4"></div>
+        <div class="nav-dot" data-section="5"></div>
+        <div class="nav-dot" data-section="6"></div>
+        <div class="nav-dot" data-section="7"></div>
+    </div>
+
+    <!-- メインコンテンツ -->
+    <div class="main-content">
+        <!-- セクション1: 導入 -->
+        <section class="section section-1" id="section-0">
+            <div class="element title">
+                🤖 AI時代の必須スキル<br>プロンプトの基礎を学ぼう！
+            </div>
+        </section>
+
+        <!-- セクション2: 基本原則 -->
+        <section class="section section-2" id="section-1">
+            <!-- JavaScript で動的に生成 -->
+        </section>
+
+        <!-- セクション3: 悪い例→良い例 -->
+        <section class="section section-3" id="section-2">
+            <!-- JavaScript で動的に生成 -->
+        </section>
+
+        <!-- セクション4: 5つの要素（導入） -->
+        <section class="section section-4" id="section-3">
+            <!-- JavaScript で動的に生成 -->
+        </section>
+
+        <!-- セクション5: 5つの要素（詳細） -->
+        <section class="section section-5" id="section-4">
+            <!-- JavaScript で動的に生成 -->
+        </section>
+
+        <!-- セクション6: 改善プロセス -->
+        <section class="section section-6" id="section-5">
+            <!-- JavaScript で動的に生成 -->
+        </section>
+
+        <!-- セクション7: 注意点 -->
+        <section class="section section-7" id="section-6">
+            <!-- JavaScript で動的に生成 -->
+        </section>
+
+        <!-- セクション8: まとめ -->
+        <section class="section section-1" id="section-7">
+            <!-- JavaScript で動的に生成 -->
+        </section>
+    </div>
+
+
+    <script>
+        // コンテンツデータ
+        const sections = [
+            {
+                title: "導入",
+                elements: [
+                    { type: 'title', content: '🤖 AI時代の必須スキル<br>プロンプトの基礎を学ぼう！' },
+                    { type: 'explanation', content: 'みなさん、こんにちは！<br>今回はAIへの指示の出し方<br>プロンプトの基礎について学んでいきましょう' }
+                ]
+            },
+            {
+                title: "基本原則",
+                elements: [
+                    { type: 'principle', content: 'プロンプト作成の<br>最も大切な考え方' },
+                    { type: 'highlight', content: '① シンプルに始める<br>② 結果を見ながら育てる' },
+                    { type: 'explanation', content: 'この2つを覚えておけば<br>誰でも効果的なプロンプトが作れます' },
+                    { type: 'explanation', content: '最近のAIはとても賢いので<br>複雑な指示じゃなくても<br>意外とちゃんと理解してくれます' }
+                ]
+            },
+            {
+                title: "悪い例→良い例",
+                elements: [
+                    { type: 'principle', content: '❌ 悪い例から学ぼう' },
+                    { type: 'example-bad', content: '「良い文章を書いて」<br><br>→ これでは何を書いていいか分からない...' },
+                    { type: 'arrow', content: '⬇️ 改善すると...' },
+                    { type: 'example-good', content: '「新入社員への歓迎メッセージを書いてください。<br>4月に入社する新卒10名に向けて、<br>会社を好きになってもらえるような、<br>温かいメッセージを200文字くらいでお願いします」' },
+                    { type: 'explanation', content: 'ぐっと具体的になりましたね！<br>これなら AIも理解しやすくなります' }
+                ]
+            },
+            {
+                title: "5つの要素（導入）",
+                elements: [
+                    { type: 'principle', content: '🛠️ 詳しく指示したい時の<br>5つの要素' },
+                    { type: 'explanation', content: 'もっと具体的な結果が欲しければ<br>以下の要素を意識してみましょう' },
+                    { type: 'highlight', content: 'でも、全部使う必要はありません<br>必要なものだけ使えばOKです！' }
+                ]
+            },
+            {
+                title: "5つの要素（詳細）",
+                elements: [
+                    { type: 'numbered-item', content: '<div class="number-circle">1</div><div><strong>役割</strong><br>「あなたは営業担当者です」のように<br>誰の立場で答えてほしいか伝える</div>' },
+                    { type: 'numbered-item', content: '<div class="number-circle">2</div><div><strong>状況説明</strong><br>今どんな場面なのかを説明する</div>' },
+                    { type: 'numbered-item', content: '<div class="number-circle">3</div><div><strong>指示</strong><br>何をしてほしいのか、はっきり伝える</div>' },
+                    { type: 'numbered-item', content: '<div class="number-circle">4</div><div><strong>形式</strong><br>箇条書きか、文章か、好みの形を指定</div>' },
+                    { type: 'numbered-item', content: '<div class="number-circle">5</div><div><strong>注意点</strong><br>特に気をつけてほしいことを追加</div>' }
+                ]
+            },
+            {
+                title: "改善プロセス",
+                elements: [
+                    { type: 'principle', content: '📈 プロンプトの育て方' },
+                    { type: 'explanation', content: 'ステップバイステップで<br>改善していく手順をご紹介します' },
+                    { type: 'explanation', content: 'ステップ1: 「顧客への提案書を作って」<br>→ 一般的すぎて使いづらい' },
+                    { type: 'explanation', content: 'ステップ2: 「IT企業向けのセキュリティ提案書を作って。<br>読む人は中小企業の社長さんです」<br>→ だいぶ良くなった！' },
+                    { type: 'explanation', content: 'ステップ3: 会社の規模、現在の課題、<br>提案書に含めたい項目を詳しく追加<br>→ そのまま使える実用的な提案書の完成！' },
+                    { type: 'highlight', content: '「シンプルに始めて、少しずつ詳しくしていく」<br>この基本原則を実践していますね<br>この流れ、とても大切です' }
+                ]
+            },
+            {
+                title: "注意点",
+                elements: [
+                    { type: 'principle', content: '⚠️ 大切な注意点' },
+                    { type: 'explanation', content: 'AIを使うときに<br>覚えておいてほしいことがあります' },
+                    { type: 'explanation', content: '① AIが出した情報は必ず確認<br>特に数字や事実関係は要注意' },
+                    { type: 'explanation', content: '② 2024年より新しい情報は<br>持っていないことが多い' },
+                    { type: 'explanation', content: '③ 最終的な判断は必ず人間が行う<br>AIはあくまでサポート役' },
+                    { type: 'warning', content: '⚠️ 絶対に守ってください<br><br>会社の機密情報や個人情報は<br>絶対に入力しない<br><br>これだけは必ず守ってください' }
+                ]
+            },
+            {
+                title: "まとめ",
+                elements: [
+                    { type: 'highlight', content: '💡 成功のコツ<br><br>① 完璧を求めすぎない（60点から始める）<br>② 具体例を示す<br>③ うまくいったプロンプトは保存' },
+                    { type: 'title', content: '🎯 重要ポイント' },
+                    { type: 'highlight', content: '「シンプルに始めて、結果を見ながら育てる」<br><br>これさえ覚えておけば大丈夫！' },
+                    { type: 'warning', content: 'そして、機密情報は絶対に入力しない<br><br>この2つを忘れないでくださいね' },
+                    { type: 'title', content: '🎉 お疲れさまでした！<br><br>今日学んだことを<br>ぜひ実際に試してみてくださいね' }
+                ]
+            }
+        ];
+
+        let currentSection = 0;
+        let currentElement = 0;
+
+        function updateDisplay() {
+            const section = sections[currentSection];
+            const sectionElement = document.getElementById(`section-${currentSection}`);
+            
+            // セクション内の要素をクリア
+            if (currentElement === 0) {
+                sectionElement.innerHTML = '';
+            }
+
+            // 現在の要素まで表示
+            for (let i = 0; i <= currentElement; i++) {
+                if (i < section.elements.length) {
+                    const element = section.elements[i];
+                    let elementDiv = sectionElement.children[i];
+                    
+                    if (!elementDiv) {
+                        elementDiv = document.createElement('div');
+                        elementDiv.className = `element ${element.type}`;
+                        elementDiv.innerHTML = element.content;
+                        sectionElement.appendChild(elementDiv);
+                        
+                        // アニメーション
+                        setTimeout(() => {
+                            elementDiv.classList.add('active');
+                        }, 100);
+                    }
+                }
+            }
+
+            // スクロール
+            sectionElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            updateProgress();
+            updateSideNav();
+        }
+
+        function updateProgress() {
+            const totalElements = sections.reduce((sum, section) => sum + section.elements.length, 0);
+            const currentElementIndex = sections.slice(0, currentSection).reduce((sum, section) => sum + section.elements.length, 0) + currentElement + 1;
+            
+            document.getElementById('progressText').textContent = `${currentElementIndex} / ${totalElements}`;
+            const progressPercent = (currentElementIndex / totalElements) * 100;
+            document.getElementById('progressFill').style.width = `${progressPercent}%`;
+        }
+
+        function updateSideNav() {
+            const dots = document.querySelectorAll('.nav-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSection);
+            });
+        }
+
+
+        function nextStep() {
+            const currentSectionObj = sections[currentSection];
+            
+            if (currentElement < currentSectionObj.elements.length - 1) {
+                currentElement++;
+            } else if (currentSection < sections.length - 1) {
+                currentSection++;
+                currentElement = 0;
+            }
+            
+            updateDisplay();
+        }
+
+        function previousStep() {
+            if (currentElement > 0) {
+                currentElement--;
+            } else if (currentSection > 0) {
+                currentSection--;
+                currentElement = sections[currentSection].elements.length - 1;
+            }
+            
+            updateDisplay();
+        }
+
+        function resetPresentation() {
+            currentSection = 0;
+            currentElement = 0;
+            
+            // 全セクションをクリア
+            sections.forEach((_, index) => {
+                const sectionElement = document.getElementById(`section-${index}`);
+                if (index !== 0) {
+                    sectionElement.innerHTML = '';
+                }
+            });
+            
+            updateDisplay();
+        }
+
+        // キーボード操作
+        document.addEventListener('keydown', function(event) {
+            switch(event.key) {
+                case 'ArrowRight':
+                case ' ':
+                    event.preventDefault();
+                    nextStep();
+                    break;
+                case 'ArrowLeft':
+                    event.preventDefault();
+                    previousStep();
+                    break;
+                case 'r':
+                case 'R':
+                    event.preventDefault();
+                    resetPresentation();
+                    break;
+            }
+        });
+
+        // サイドナビクリック
+        document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSection = index;
+                currentElement = 0;
+                updateDisplay();
+            });
+        });
+
+        // 初期化
+        updateDisplay();
+        document.body.focus();
+    </script>
+</body>
+</html>
