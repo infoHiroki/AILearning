@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>プロンプト基礎 - インタラクティブLP</title>
+    <!-- Font Awesome (商用利用可能) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -41,72 +43,10 @@
             margin-bottom: 5px;
         }
 
-        /* プログレスバー */
-        .progress-header {
-            position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            z-index: 999;
-            backdrop-filter: blur(5px);
-        }
-
-        .progress-bar {
-            width: 300px;
-            height: 6px;
-            background: #e0e0e0;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            transition: width 0.3s ease;
-            border-radius: 3px;
-        }
-
-        .progress-text {
-            color: #667eea;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        /* サイドナビゲーション */
-        .side-nav {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .nav-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(102, 126, 234, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-dot.active {
-            background: #667eea;
-            transform: scale(1.3);
-        }
 
         /* メインコンテンツ */
         .main-content {
-            margin-top: 120px;
+            margin-top: 70px;
         }
 
         /* セクション共通スタイル */
@@ -179,6 +119,14 @@
             color: #764ba2;
             border-left: 6px solid #667eea;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .element.principle::before {
+            content: '💡';
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 15px;
         }
 
         /* 説明要素 */
@@ -204,6 +152,14 @@
             text-align: center;
             font-weight: bold;
             box-shadow: 0 6px 20px rgba(33, 150, 243, 0.2);
+            position: relative;
+        }
+        
+        .element.highlight::before {
+            content: '🎯';
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
         }
 
         /* ステップ要素 */
@@ -214,6 +170,17 @@
             border-radius: 12px;
             font-size: 1.15rem;
             color: #6a1b9a;
+            position: relative;
+            padding-left: 60px;
+        }
+        
+        .element.step::before {
+            content: '▶️';
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
         }
 
         /* 悪い例 */
@@ -225,6 +192,16 @@
             font-size: 1.15rem;
             color: #c62828;
             box-shadow: 0 4px 12px rgba(244, 67, 54, 0.2);
+            position: relative;
+            padding-left: 60px;
+        }
+        
+        .element.example-bad::before {
+            content: '❌';
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            font-size: 1.5rem;
         }
 
         /* 良い例 */
@@ -236,6 +213,16 @@
             font-size: 1.15rem;
             color: #2e7d32;
             box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+            position: relative;
+            padding-left: 60px;
+        }
+        
+        .element.example-good::before {
+            content: '✅';
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            font-size: 1.5rem;
         }
 
         /* 矢印 */
@@ -291,6 +278,14 @@
             text-align: center;
             font-weight: bold;
             box-shadow: 0 6px 20px rgba(255, 87, 34, 0.2);
+            position: relative;
+        }
+        
+        .element.warning::before {
+            content: '⚠️';
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
         }
 
         /* レスポンシブ対応 */
@@ -307,16 +302,6 @@
         <h1>🎯 プロンプト基礎</h1>
     </div>
 
-    <!-- プログレスバー -->
-    <div class="progress-header">
-        <span class="progress-text" id="progressText">1 / 1</span>
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-        </div>
-    </div>
-
-    <!-- サイドナビゲーション -->
-    <div class="side-nav" id="sideNav"></div>
 
     <!-- メインコンテンツ -->
     <div class="main-content" id="mainContent"></div>
@@ -328,7 +313,6 @@
                 title: "導入",
                 elements: [
                     { type: 'title', content: '🤖 プロンプト基礎' },
-                    { type: 'explanation', content: 'みなさん、こんにちは' },
                     { type: 'explanation', content: '今回はAIへの指示の出し方<br>プロンプトの基礎について学んでいきましょう' }
                 ]
             },
@@ -364,7 +348,7 @@
                 elements: [
                     { type: 'subtitle', content: 'ステップ1: ゼロショット' },
                     { type: 'explanation', content: 'ゼロショットとは<br>事前情報なしでいきなり<br>「なになにを作って」と頼むことです' },
-                    { type: 'explanation', content: '実は多くの場合<br>このくらいシンプルなスタートで十分です' }
+                    { type: 'explanation', content: '💪 実は多くの場合<br>このくらいシンプルなスタートで十分です' }
                 ]
             },
             {
@@ -372,7 +356,7 @@
                 elements: [
                     { type: 'explanation', content: 'たとえば、こんな感じです' },
                     { type: 'example-good', content: '「営業メールを書いてください。<br>相手はABC商事の田中部長で、<br>来週の会議について連絡したいです」' },
-                    { type: 'explanation', content: 'これだけでも<br>AIはちゃんとメールを作ってくれます' }
+                    { type: 'explanation', content: '🎆 これだけでも<br>AIはちゃんとメールを作ってくれます' }
                 ]
             },
             {
@@ -435,23 +419,23 @@
             {
                 title: "プロンプトの再利用",
                 elements: [
-                    { type: 'explanation', content: 'このプロンプトは<br>次回から一発で使えます' },
-                    { type: 'highlight', content: '時間の節約になりますね' }
+                    { type: 'explanation', content: '🔄 このプロンプトは<br>次回から一発で使えます' },
+                    { type: 'highlight', content: '⏰ 時間の節約になりますね' }
                 ]
             },
             {
                 title: "悪い例",
                 elements: [
                     { type: 'explanation', content: 'ここで、良い例と悪い例を<br>比較してみましょう' },
-                    { type: 'example-bad', content: '❌ 悪い例<br><br>「良い文章を書いて」' },
+                    { type: 'example-bad', content: '悪い例<br><br>「良い文章を書いて」' },
                     { type: 'explanation', content: 'これでは、AIも<br>何を書いていいか分かりませんよね' }
                 ]
             },
             {
                 title: "良い例",
                 elements: [
-                    { type: 'example-good', content: '✅ 良い例<br><br>「新入社員への歓迎メッセージを書いてください。<br>4月に入社する新卒10名に向けて、<br>会社を好きになってもらえるような、<br>温かいメッセージを200文字くらいでお願いします」' },
-                    { type: 'explanation', content: 'ぐっと具体的になりましたね' }
+                    { type: 'example-good', content: '良い例<br><br>「新入社員への歓迎メッセージを書いてください。<br>4月に入社する新卒10名に向けて、<br>会社を好きになってもらえるような、<br>温かいメッセージを200文字くらいでお願いします」' },
+                    { type: 'explanation', content: '✨ ぐっと具体的になりましたね' }
                 ]
             },
             {
@@ -492,9 +476,9 @@
             {
                 title: "壁打ちの効果",
                 elements: [
-                    { type: 'explanation', content: 'このように壁打ちを繰り返していくと<br>どんどん出力が良くなっていきます' },
+                    { type: 'explanation', content: '📈 このように壁打ちを繰り返していくと<br>どんどん出力が良くなっていきます' },
                     { type: 'highlight', content: 'そして最後に<br>「今のやり取りをまとめて<br>プロンプトを作って」と頼むと' },
-                    { type: 'explanation', content: '次回から使える<br>効率的なプロンプトが完成します' }
+                    { type: 'explanation', content: '🎉 次回から使える<br>効率的なプロンプトが完成します' }
                 ]
             },
             {
@@ -595,13 +579,13 @@
                 elements: [
                     { type: 'explanation', content: '最初から完璧なプロンプトを<br>作ろうとする必要はありません' },
                     { type: 'explanation', content: 'まずは簡単なプロンプトから始めて<br>少しずつ自分好みに<br>調整していってください' },
-                    { type: 'explanation', content: 'AIは皆さんの仕事を助けてくれる<br>強力なパートナーです' }
+                    { type: 'explanation', content: '🤝 AIは皆さんの仕事を助けてくれる<br>強力なパートナーです' }
                 ]
             },
             {
                 title: "お疲れさまでした",
                 elements: [
-                    { type: 'title', content: 'お疲れさまでした！' },
+                    { type: 'title', content: '🎉 お疲れさまでした！' },
                     { type: 'explanation', content: '今日学んだことを<br>ぜひ実際に試してみてくださいね' }
                 ]
             },
@@ -618,7 +602,7 @@
                 title: "終わり",
                 elements: [
                     { type: 'explanation', content: 'それでは<br>プロンプト基礎の説明は以上です' },
-                    { type: 'title', content: 'ありがとうございました' }
+                    { type: 'title', content: '🙏 ありがとうございました' }
                 ]
             }
         ];
@@ -628,7 +612,6 @@
 
         function initializeSections() {
             const mainContent = document.getElementById('mainContent');
-            const sideNav = document.getElementById('sideNav');
             
             // セクションを作成
             sections.forEach((section, index) => {
@@ -636,13 +619,6 @@
                 sectionDiv.className = `section section-${(index % 10) + 1}`;
                 sectionDiv.id = `section-${index}`;
                 mainContent.appendChild(sectionDiv);
-
-                // サイドナビのドットを作成
-                const dot = document.createElement('div');
-                dot.className = 'nav-dot';
-                if (index === 0) dot.classList.add('active');
-                dot.dataset.section = index;
-                sideNav.appendChild(dot);
             });
         }
 
@@ -677,26 +653,8 @@
 
             // スクロール
             sectionElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-            updateProgress();
-            updateSideNav();
         }
 
-        function updateProgress() {
-            const totalElements = sections.reduce((sum, section) => sum + section.elements.length, 0);
-            const currentElementIndex = sections.slice(0, currentSection).reduce((sum, section) => sum + section.elements.length, 0) + currentElement + 1;
-            
-            document.getElementById('progressText').textContent = `${currentElementIndex} / ${totalElements}`;
-            const progressPercent = (currentElementIndex / totalElements) * 100;
-            document.getElementById('progressFill').style.width = `${progressPercent}%`;
-        }
-
-        function updateSideNav() {
-            const dots = document.querySelectorAll('.nav-dot');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSection);
-            });
-        }
 
         function nextStep() {
             const currentSectionObj = sections[currentSection];
@@ -755,14 +713,6 @@
             }
         });
 
-        // サイドナビクリック
-        document.addEventListener('click', function(event) {
-            if (event.target.classList.contains('nav-dot')) {
-                currentSection = parseInt(event.target.dataset.section);
-                currentElement = 0;
-                updateDisplay();
-            }
-        });
 
         // 初期化
         initializeSections();
