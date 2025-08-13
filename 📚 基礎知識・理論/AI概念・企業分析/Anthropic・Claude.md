@@ -1,8 +1,5 @@
 # Anthropic・Claude詳解
 
-**所要時間**: 45分  
-**レベル**: 基礎  
-**前提知識**: [Google AI戦略](10-google-ai.md)
 
 ## 学習目標
 
