@@ -23,30 +23,11 @@
             line-height: 1.8;
         }
 
-        /* 固定ヘッダー */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px 20px;
-            text-align: center;
-            border-bottom: 3px solid #667eea;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        .header h1 {
-            font-size: 1.8rem;
-            color: #667eea;
-            margin-bottom: 5px;
-        }
 
 
         /* メインコンテンツ */
         .main-content {
-            margin-top: 70px;
+            margin-top: 0;
         }
 
         /* セクション共通スタイル */
@@ -139,6 +120,7 @@
             color: #555;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             line-height: 1.8;
+            word-wrap: break-word;
         }
 
         /* ハイライト要素 */
@@ -172,6 +154,7 @@
             color: #6a1b9a;
             position: relative;
             padding-left: 60px;
+            word-wrap: break-word;
         }
         
         .element.step::before {
@@ -194,6 +177,8 @@
             box-shadow: 0 4px 12px rgba(244, 67, 54, 0.2);
             position: relative;
             padding-left: 60px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .element.example-bad::before {
@@ -215,6 +200,8 @@
             box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
             position: relative;
             padding-left: 60px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .element.example-good::before {
@@ -289,18 +276,120 @@
         }
 
         /* レスポンシブ対応 */
+        
+        /* タブレット（768px以下） */
         @media (max-width: 768px) {
+            .section { 
+                padding: 15px 10px; 
+                min-height: 60vh;
+            }
+            
+            .element { max-width: 100%; margin-bottom: 10px; }
             .element.title { font-size: 1.8rem; }
-            .element.principle { font-size: 1.3rem; padding: 20px; }
-            .side-nav { display: none; }
+            .element.subtitle { font-size: 1.3rem; }
+            .element.principle { font-size: 1.2rem; padding: 15px; }
+            .element.highlight { font-size: 1rem; padding: 15px; }
+            .element.explanation { font-size: 1rem; padding: 12px 15px; }
+            .element.step { font-size: 0.95rem; padding: 12px; padding-left: 45px; }
+            .element.example-good, .element.example-bad { 
+                font-size: 0.95rem; 
+                padding: 12px; 
+                padding-left: 45px; 
+            }
+            .element.warning { font-size: 1rem; padding: 15px; }
+            .element.numbered-item { font-size: 0.95rem; padding: 12px; }
+        }
+        
+        /* スマートフォン（480px以下） */
+        @media (max-width: 480px) {
+            .section { 
+                padding: 10px 8px; 
+                min-height: 50vh;
+            }
+            
+            .element { margin-bottom: 8px; }
+            .element.title { font-size: 1.6rem; line-height: 1.2; }
+            .element.subtitle { font-size: 1.3rem; }
+            .element.principle { 
+                font-size: 1.1rem; 
+                padding: 15px;
+                line-height: 1.6;
+            }
+            .element.highlight { 
+                font-size: 1rem; 
+                padding: 15px;
+                line-height: 1.6;
+            }
+            .element.explanation { 
+                font-size: 1rem; 
+                padding: 12px 15px;
+                line-height: 1.7;
+            }
+            .element.step { 
+                font-size: 0.95rem; 
+                padding: 12px; 
+                padding-left: 45px;
+                line-height: 1.6;
+            }
+            .element.example-good, .element.example-bad { 
+                font-size: 0.95rem; 
+                padding: 12px; 
+                padding-left: 45px;
+                line-height: 1.6;
+            }
+            .element.warning { 
+                font-size: 1rem; 
+                padding: 15px;
+                line-height: 1.6;
+            }
+            .element.numbered-item { 
+                font-size: 0.95rem; 
+                padding: 12px;
+                gap: 10px;
+            }
+            
+            .number-circle {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            
+            /* アイコンサイズ調整 */
+            .element.step::before,
+            .element.example-good::before,
+            .element.example-bad::before {
+                font-size: 1.2rem;
+            }
+            
+            .element.principle::before,
+            .element.highlight::before,
+            .element.warning::before {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* 極小画面（360px以下） */
+        @media (max-width: 360px) {
+            .section { padding: 8px 5px; }
+            
+            .element.title { font-size: 1.4rem; }
+            .element.principle, .element.highlight, .element.warning {
+                padding: 12px;
+                font-size: 0.95rem;
+            }
+            .element.explanation { 
+                font-size: 0.95rem;
+                padding: 10px 12px;
+            }
+            .element.step, .element.example-good, .element.example-bad {
+                font-size: 0.9rem;
+                padding: 10px;
+                padding-left: 40px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 固定ヘッダー -->
-    <div class="header">
-        <h1>🎯 プロンプト基礎</h1>
-    </div>
 
 
     <!-- メインコンテンツ -->
