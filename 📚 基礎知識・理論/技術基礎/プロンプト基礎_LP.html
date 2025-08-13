@@ -18,7 +18,7 @@
         body {
             font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         /* 固定ヘッダー */
@@ -39,11 +39,6 @@
             font-size: 1.8rem;
             color: #667eea;
             margin-bottom: 5px;
-        }
-
-        .header .subtitle {
-            font-size: 1rem;
-            color: #666;
         }
 
         /* プログレスバー */
@@ -92,12 +87,12 @@
             z-index: 1000;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .nav-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(102, 126, 234, 0.3);
             cursor: pointer;
@@ -111,18 +106,18 @@
 
         /* メインコンテンツ */
         .main-content {
-            margin-top: 120px; /* ヘッダー分の余白 */
+            margin-top: 120px;
         }
 
         /* セクション共通スタイル */
         .section {
             min-height: 100vh;
-            padding: 60px 20px;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             position: relative;
         }
@@ -137,15 +132,16 @@
         .section-7 { background: linear-gradient(135deg, #e8f5e8 0%, #f5f5f5 100%); }
         .section-8 { background: #f8f9fa; }
         .section-9 { background: linear-gradient(135deg, #fff9c4 0%, #f5f5f5 100%); }
+        .section-10 { background: linear-gradient(135deg, #fce4ec 0%, #f5f5f5 100%); }
 
         /* 要素共通スタイル */
         .element {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.6s ease-out;
-            margin-bottom: 30px;
+            transform: translateY(30px);
+            transition: all 0.5s ease-out;
+            margin-bottom: 25px;
             width: 100%;
-            max-width: 800px;
+            max-width: 700px;
         }
 
         .element.active {
@@ -156,75 +152,95 @@
         /* タイトル要素 */
         .element.title {
             text-align: center;
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: bold;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+            line-height: 1.3;
         }
 
         .section-1 .element.title { color: white; }
         .element.title { color: #667eea; }
 
+        /* サブタイトル */
+        .element.subtitle {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #764ba2;
+            margin-bottom: 25px;
+        }
+
         /* 原則要素 */
         .element.principle {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
             text-align: center;
-            font-size: 2rem;
+            font-size: 1.6rem;
             color: #764ba2;
-            border-left: 8px solid #667eea;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 6px solid #667eea;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
         /* 説明要素 */
         .element.explanation {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 25px 35px;
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px 30px;
+            border-radius: 12px;
             text-align: center;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: #555;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            line-height: 1.8;
         }
 
         /* ハイライト要素 */
         .element.highlight {
             background: linear-gradient(45deg, #e3f2fd, #fff);
-            border: 3px solid #2196f3;
-            padding: 35px;
-            border-radius: 20px;
-            font-size: 1.6rem;
+            border: 2px solid #2196f3;
+            padding: 25px;
+            border-radius: 15px;
+            font-size: 1.3rem;
             color: #0d47a1;
             text-align: center;
             font-weight: bold;
-            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.2);
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.2);
+        }
+
+        /* ステップ要素 */
+        .element.step {
+            background: linear-gradient(45deg, #f3e5f5, #fff);
+            border-left: 6px solid #9c27b0;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 1.15rem;
+            color: #6a1b9a;
         }
 
         /* 悪い例 */
         .element.example-bad {
             background: linear-gradient(45deg, #ffebee, #fff);
-            border-left: 8px solid #f44336;
-            padding: 30px;
-            border-radius: 15px;
-            font-size: 1.4rem;
+            border-left: 6px solid #f44336;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 1.15rem;
             color: #c62828;
-            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.2);
+            box-shadow: 0 4px 12px rgba(244, 67, 54, 0.2);
         }
 
         /* 良い例 */
         .element.example-good {
             background: linear-gradient(45deg, #e8f5e8, #fff);
-            border-left: 8px solid #4caf50;
-            padding: 30px;
-            border-radius: 15px;
-            font-size: 1.4rem;
+            border-left: 6px solid #4caf50;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 1.15rem;
             color: #2e7d32;
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
         }
 
         /* 矢印 */
         .element.arrow {
-            font-size: 3rem;
+            font-size: 2rem;
             color: #ff9800;
             text-align: center;
             animation: bounce 2s infinite;
@@ -232,59 +248,56 @@
 
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-15px); }
-            60% { transform: translateY(-7px); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
 
         /* 5つの要素 */
         .element.numbered-item {
             background: linear-gradient(45deg, #fff3e0, #fff);
-            border-left: 8px solid #ff9800;
-            padding: 25px;
-            border-radius: 15px;
-            font-size: 1.3rem;
+            border-left: 6px solid #ff9800;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 1.1rem;
             color: #e65100;
             display: flex;
             align-items: flex-start;
-            gap: 20px;
-            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.2);
+            gap: 15px;
+            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.2);
         }
 
         .number-circle {
             background: #ff9800;
             color: white;
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             flex-shrink: 0;
+            font-size: 1rem;
         }
 
         /* 警告要素 */
         .element.warning {
             background: linear-gradient(45deg, #fff3e0, #fff);
-            border: 3px solid #ff5722;
-            padding: 35px;
-            border-radius: 20px;
-            font-size: 1.5rem;
+            border: 2px solid #ff5722;
+            padding: 25px;
+            border-radius: 15px;
+            font-size: 1.2rem;
             color: #d84315;
             text-align: center;
             font-weight: bold;
-            box-shadow: 0 8px 25px rgba(255, 87, 34, 0.2);
+            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.2);
         }
-
-
 
         /* レスポンシブ対応 */
         @media (max-width: 768px) {
-            .element.title { font-size: 2rem; }
-            .element.principle { font-size: 1.5rem; padding: 25px; }
+            .element.title { font-size: 1.8rem; }
+            .element.principle { font-size: 1.3rem; padding: 20px; }
             .side-nav { display: none; }
-            .controls { bottom: 20px; }
-            .btn { padding: 12px 20px; font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -296,187 +309,342 @@
 
     <!-- プログレスバー -->
     <div class="progress-header">
-        <span class="progress-text" id="progressText">1 / 36</span>
+        <span class="progress-text" id="progressText">1 / 1</span>
         <div class="progress-bar">
             <div class="progress-fill" id="progressFill"></div>
         </div>
     </div>
 
-
     <!-- サイドナビゲーション -->
-    <div class="side-nav" id="sideNav">
-        <div class="nav-dot active" data-section="0"></div>
-        <div class="nav-dot" data-section="1"></div>
-        <div class="nav-dot" data-section="2"></div>
-        <div class="nav-dot" data-section="3"></div>
-        <div class="nav-dot" data-section="4"></div>
-        <div class="nav-dot" data-section="5"></div>
-        <div class="nav-dot" data-section="6"></div>
-        <div class="nav-dot" data-section="7"></div>
-        <div class="nav-dot" data-section="8"></div>
-        <div class="nav-dot" data-section="9"></div>
-    </div>
+    <div class="side-nav" id="sideNav"></div>
 
     <!-- メインコンテンツ -->
-    <div class="main-content">
-        <!-- セクション1: 導入 -->
-        <section class="section section-1" id="section-0">
-            <div class="element title">
-                🤖 AI時代の必須スキル<br>プロンプトの基礎を学ぼう！
-            </div>
-        </section>
-
-        <!-- セクション2: 基本原則 -->
-        <section class="section section-2" id="section-1">
-            <!-- JavaScript で動的に生成 -->
-        </section>
-
-        <!-- セクション3: シンプルなプロンプト -->
-        <section class="section section-3" id="section-2">
-            <!-- JavaScript で動的に生成 -->
-        </section>
-
-        <!-- セクション4: 5つの要素（導入） -->
-        <section class="section section-4" id="section-3">
-            <!-- JavaScript で動的に生成 -->
-        </section>
-
-        <!-- セクション5: 5つの要素（詳細） -->
-        <section class="section section-5" id="section-4">
-            <!-- JavaScript で動的に生成 -->
-        </section>
-
-        <!-- セクション6: 悪い例→良い例 -->
-        <section class="section section-6" id="section-5">
-            <!-- JavaScript で動的に生成 -->
-        </section>
-
-        <!-- セクション7: 改善プロセス -->
-        <section class="section section-7" id="section-6">
-            <!-- JavaScript で動的に生成 -->
-        </section>
-
-        <!-- セクション8: 注意点 -->
-        <section class="section section-8" id="section-7">
-            <!-- JavaScript で動的に生成 -->
-        </section>
-
-        <!-- セクション9: 効果的な使い方 -->
-        <section class="section section-9" id="section-8">
-            <!-- JavaScript で動的に生成 -->
-        </section>
-
-        <!-- セクション10: まとめ -->
-        <section class="section section-1" id="section-9">
-            <!-- JavaScript で動的に生成 -->
-        </section>
-    </div>
-
+    <div class="main-content" id="mainContent"></div>
 
     <script>
-        // コンテンツデータ
+        // コンテンツデータ - TTS台本に完全対応
         const sections = [
             {
                 title: "導入",
                 elements: [
-                    { type: 'title', content: '🤖 AI時代の必須スキル<br>プロンプトの基礎を学ぼう！' },
-                    { type: 'explanation', content: 'みなさん、こんにちは<br>今回はエーアイへの指示の出し方<br>プロンプトの基礎について学んでいきましょう' }
+                    { type: 'title', content: '🤖 プロンプト基礎' },
+                    { type: 'explanation', content: 'みなさん、こんにちは' },
+                    { type: 'explanation', content: '今回はAIへの指示の出し方<br>プロンプトの基礎について学んでいきましょう' }
                 ]
             },
             {
-                title: "基本原則",
+                title: "基本的な考え方",
                 elements: [
-                    { type: 'principle', content: 'プロンプト作成の<br>最も大切な考え方' },
-                    { type: 'highlight', content: 'たった2つです<br><br>① シンプルに始める<br>② 結果を見ながら育てる' },
-                    { type: 'explanation', content: 'これは本当に大切なので<br>よく覚えておいてくださいね' },
-                    { type: 'explanation', content: '育てるというのは<br>プロンプトを改善していくことを指しています' },
-                    { type: 'highlight', content: '「シンプルに始めて、結果を見ながら育てる」<br><br>この2つを覚えてください' }
+                    { type: 'explanation', content: 'それでは、まず最初に<br>基本的な考え方からご説明します' },
+                    { type: 'explanation', content: 'AIを使いこなすには<br>上手なプロンプトの作り方を知ることが大切です' },
+                    { type: 'explanation', content: '今日は、誰でも簡単にできる<br>プロンプトの作り方を<br>実例を交えながらご紹介します' }
                 ]
             },
             {
-                title: "シンプルなプロンプト",
+                title: "3ステップの方法",
                 elements: [
-                    { type: 'principle', content: '📧 シンプルな指示の出し方' },
-                    { type: 'explanation', content: '実は多くの場合<br>とてもシンプルなプロンプトで十分です' },
-                    { type: 'example-good', content: '「営業メールを書いてください。<br>相手はエービーシー商事の田中部長で、<br>来週の会議について連絡したいです」' },
-                    { type: 'explanation', content: 'これだけでも、エーアイは<br>ちゃんとメールを作ってくれます' }
+                    { type: 'principle', content: 'プロンプトを作る上で<br>最も効果的な方法があります' },
+                    { type: 'step', content: 'まず「ゼロショット」で始める' },
+                    { type: 'explanation', content: 'つまり、事前情報なしで<br>シンプルに「これ作って」と頼んでみる' },
+                    { type: 'step', content: '次に「壁打ち」をしていく' },
+                    { type: 'explanation', content: 'AIとやり取りを繰り返しながら<br>より良い出力になるよう調整していきます' },
+                    { type: 'step', content: 'そして最後に、いい出力が得られたら' },
+                    { type: 'explanation', content: 'AIに「今のやり取りをまとめて<br>効果的なプロンプトを作って」と頼む' }
                 ]
             },
             {
-                title: "5つの要素（導入）",
+                title: "3ステップまとめ",
                 elements: [
-                    { type: 'principle', content: '🛠️ 詳しく伝えたい時の<br>5つの要素' },
-                    { type: 'explanation', content: 'もっと具体的な結果が欲しければ<br>以下の要素を意識してみましょう' },
-                    { type: 'highlight', content: 'でも、全部使う必要はありません<br>必要なものだけ使えばOKです！' }
+                    { type: 'highlight', content: 'ゼロショット<br>↓<br>壁打ち<br>↓<br>プロンプトまとめ' },
+                    { type: 'explanation', content: 'この流れが<br>実は最も実践的で効果的な方法です' }
                 ]
             },
             {
-                title: "5つの要素（詳細）",
+                title: "ステップ1: ゼロショット",
                 elements: [
-                    { type: 'numbered-item', content: '<div class="number-circle">1</div><div><strong>役割</strong><br>「あなたは営業担当者です」のように<br>誰の立場で答えてほしいか伝える</div>' },
-                    { type: 'numbered-item', content: '<div class="number-circle">2</div><div><strong>状況説明</strong><br>今どんな場面なのかを説明する</div>' },
-                    { type: 'numbered-item', content: '<div class="number-circle">3</div><div><strong>指示</strong><br>何をしてほしいのか、はっきり伝える</div>' },
-                    { type: 'numbered-item', content: '<div class="number-circle">4</div><div><strong>形式</strong><br>箇条書きか、文章か、好みの形を指定</div>' },
-                    { type: 'numbered-item', content: '<div class="number-circle">5</div><div><strong>注意点</strong><br>特に気をつけてほしいことを追加</div>' }
+                    { type: 'subtitle', content: 'ステップ1: ゼロショット' },
+                    { type: 'explanation', content: 'ゼロショットとは<br>事前情報なしでいきなり<br>「なになにを作って」と頼むことです' },
+                    { type: 'explanation', content: '実は多くの場合<br>このくらいシンプルなスタートで十分です' }
                 ]
             },
             {
-                title: "悪い例→良い例",
+                title: "ゼロショットの例",
                 elements: [
-                    { type: 'principle', content: '❌ 良い例と悪い例' },
-                    { type: 'example-bad', content: '「良い文章を書いて」<br><br>→ これでは何を書いていいか分からない...' },
-                    { type: 'arrow', content: '⬇️ 改善すると...' },
-                    { type: 'example-good', content: '「新入社員への歓迎メッセージを書いてください。<br>4月に入社する新卒10名に向けて、<br>会社を好きになってもらえるような、<br>温かいメッセージを200文字くらいでお願いします」' },
+                    { type: 'explanation', content: 'たとえば、こんな感じです' },
+                    { type: 'example-good', content: '「営業メールを書いてください。<br>相手はABC商事の田中部長で、<br>来週の会議について連絡したいです」' },
+                    { type: 'explanation', content: 'これだけでも<br>AIはちゃんとメールを作ってくれます' }
+                ]
+            },
+            {
+                title: "ステップ2: 壁打ち",
+                elements: [
+                    { type: 'subtitle', content: 'ステップ2: 壁打ち' },
+                    { type: 'explanation', content: '最初の出力を見て' },
+                    { type: 'example-good', content: '「もうちょっとフォーマルに」<br>「件名も考えて」' },
+                    { type: 'explanation', content: '追加の指示を出していきます' }
+                ]
+            },
+            {
+                title: "壁打ちのコツ",
+                elements: [
+                    { type: 'explanation', content: 'このやり取りを繰り返すことで<br>求めている出力に近づけていくんです' },
+                    { type: 'highlight', content: '壁打ちのコツ' },
+                    { type: 'explanation', content: '一度に全部を要求しないこと' },
+                    { type: 'explanation', content: '少しずつ調整していく方が<br>AIも理解しやすくなります' }
+                ]
+            },
+            {
+                title: "ステップ3: プロンプトまとめ",
+                elements: [
+                    { type: 'subtitle', content: 'ステップ3: プロンプトまとめ' },
+                    { type: 'explanation', content: 'いい出力が得られたら、こう頼みます' },
+                    { type: 'example-good', content: '「今までのやり取りをまとめて<br>一発で同じような出力が得られる<br>プロンプトを作って」' }
+                ]
+            },
+            {
+                title: "5つの要素",
+                elements: [
+                    { type: 'explanation', content: 'すると、AIが効果的なプロンプトを<br>作ってくれます' },
+                    { type: 'explanation', content: 'このプロンプトには<br>実は5つの要素が含まれていることが<br>多いのです' }
+                ]
+            },
+            {
+                title: "5つの要素詳細",
+                elements: [
+                    { type: 'numbered-item', content: '<div class="number-circle">1</div><div>役割<br>「あなたは〇〇です」という設定</div>' },
+                    { type: 'numbered-item', content: '<div class="number-circle">2</div><div>状況説明<br>今どんな場面なのかの説明</div>' },
+                    { type: 'numbered-item', content: '<div class="number-circle">3</div><div>指示<br>何をしてほしいかの明確な指示</div>' },
+                    { type: 'numbered-item', content: '<div class="number-circle">4</div><div>形式<br>出力の形式の指定</div>' },
+                    { type: 'numbered-item', content: '<div class="number-circle">5</div><div>注意点<br>特に気をつけてほしいこと</div>' }
+                ]
+            },
+            {
+                title: "5つの要素の考え方",
+                elements: [
+                    { type: 'explanation', content: 'でも、これらを最初から<br>考える必要はありません' },
+                    { type: 'highlight', content: '壁打ちの結果として<br>自然に含まれてくるものなのです' }
+                ]
+            },
+            {
+                title: "完成プロンプトの例",
+                elements: [
+                    { type: 'explanation', content: 'たとえば、壁打ちの結果<br>まとめてもらったプロンプトは<br>こんな感じになります' },
+                    { type: 'example-good', content: '「あなたは営業担当者です。<br>新規顧客との初回商談が来週予定されています。<br>先方の課題をヒアリングして、<br>当社のサービスがどう役立つか提案してください。<br>提案内容は箇条書きで3つにまとめてください。<br>専門用語は使わず、分かりやすい言葉で<br>説明することを心がけてください。」' }
+                ]
+            },
+            {
+                title: "プロンプトの再利用",
+                elements: [
+                    { type: 'explanation', content: 'このプロンプトは<br>次回から一発で使えます' },
+                    { type: 'highlight', content: '時間の節約になりますね' }
+                ]
+            },
+            {
+                title: "悪い例",
+                elements: [
+                    { type: 'explanation', content: 'ここで、良い例と悪い例を<br>比較してみましょう' },
+                    { type: 'example-bad', content: '❌ 悪い例<br><br>「良い文章を書いて」' },
+                    { type: 'explanation', content: 'これでは、AIも<br>何を書いていいか分かりませんよね' }
+                ]
+            },
+            {
+                title: "良い例",
+                elements: [
+                    { type: 'example-good', content: '✅ 良い例<br><br>「新入社員への歓迎メッセージを書いてください。<br>4月に入社する新卒10名に向けて、<br>会社を好きになってもらえるような、<br>温かいメッセージを200文字くらいでお願いします」' },
                     { type: 'explanation', content: 'ぐっと具体的になりましたね' }
                 ]
             },
             {
-                title: "改善プロセス",
+                title: "壁打ちの実例",
                 elements: [
-                    { type: 'principle', content: '📈 プロンプトの育て方' },
-                    { type: 'explanation', content: 'ステップバイステップで<br>改善していく手順をご紹介します' },
-                    { type: 'explanation', content: 'ステップ1: 「顧客への提案書を作って」<br>→ 一般的すぎて使いづらい' },
-                    { type: 'explanation', content: 'ステップ2: 「IT企業向けのセキュリティ提案書を作って。<br>読む人は中小企業の社長さんです」<br>→ だいぶ良くなった！' },
-                    { type: 'explanation', content: 'ステップ3: 会社の規模、現在の課題、<br>提案書に含めたい項目を詳しく追加<br>→ そのまま使える実用的な提案書の完成！' },
-                    { type: 'highlight', content: '「シンプルに始めて、少しずつ詳しくしていく」<br>この基本原則を実践していますね<br>この流れ、とても大切です' }
+                    { type: 'principle', content: '実際の壁打ちの様子を<br>見てみましょう' },
+                    { type: 'step', content: '最初のゼロショット：<br>「顧客への提案書を作って」' }
                 ]
             },
             {
-                title: "注意点",
+                title: "壁打ち1回目",
                 elements: [
-                    { type: 'principle', content: '⚠️ 大切な注意点' },
-                    { type: 'explanation', content: 'エーアイを使うときに<br>覚えておいてほしいことがあります' },
-                    { type: 'explanation', content: '① エーアイが出した情報は必ず確認<br>特に数字や事実関係は要注意' },
-                    { type: 'explanation', content: '② 2024年より新しい情報は<br>持っていないことが多い' },
-                    { type: 'explanation', content: '③ 最終的な判断は必ず人間が行う<br>エーアイはあくまでサポート役' },
-                    { type: 'warning', content: '⚠️ 絶対に守ってください<br><br>会社の機密情報や個人情報は<br>絶対に入力しない<br><br>これだけは必ず守ってください' }
+                    { type: 'explanation', content: 'AIの出力を見て、壁打ち1回目' },
+                    { type: 'step', content: '「IT企業向けにして」' }
                 ]
             },
             {
-                title: "効果的な使い方",
+                title: "壁打ち2回目",
                 elements: [
-                    { type: 'principle', content: '💡 効果的に使うコツ' },
-                    { type: 'highlight', content: '① 完璧を求めすぎない<br>最初は60点でも、使いながら改善' },
-                    { type: 'highlight', content: '② 具体例を示す<br>「こんな感じで」と例を見せる' },
-                    { type: 'highlight', content: '③ 結果を次に活かす<br>うまくいったプロンプトは保存' }
+                    { type: 'explanation', content: '壁打ち2回目' },
+                    { type: 'step', content: '「セキュリティに特化した内容で」' }
+                ]
+            },
+            {
+                title: "壁打ち3回目",
+                elements: [
+                    { type: 'explanation', content: '壁打ち3回目' },
+                    { type: 'step', content: '「読み手は中小企業の社長さん。<br>専門用語は避けて」' }
+                ]
+            },
+            {
+                title: "壁打ち4回目",
+                elements: [
+                    { type: 'explanation', content: '壁打ち4回目' },
+                    { type: 'step', content: '「予算感も含めて、<br>3つのプランを提示して」' }
+                ]
+            },
+            {
+                title: "壁打ちの効果",
+                elements: [
+                    { type: 'explanation', content: 'このように壁打ちを繰り返していくと<br>どんどん出力が良くなっていきます' },
+                    { type: 'highlight', content: 'そして最後に<br>「今のやり取りをまとめて<br>プロンプトを作って」と頼むと' },
+                    { type: 'explanation', content: '次回から使える<br>効率的なプロンプトが完成します' }
+                ]
+            },
+            {
+                title: "上級者向けのコツ",
+                elements: [
+                    { type: 'explanation', content: '次に、プロンプトを効率化する<br>ちょっとしたコツをご紹介します' },
+                    { type: 'explanation', content: 'たくさんの情報を整理して伝える方法や<br>毎回同じ設定を使い回す方法などがあります' },
+                    { type: 'explanation', content: 'たとえば、XMLタグで情報を整理したり<br>システムプロンプトで役割を固定したり' }
+                ]
+            },
+            {
+                title: "今日の3ステップ",
+                elements: [
+                    { type: 'explanation', content: 'でも、これらは少し上級者向けの内容なので<br>詳しくは別のセクションで説明します' },
+                    { type: 'highlight', content: 'まずは今日お話しした3ステップを<br>しっかりマスターしてくださいね' }
+                ]
+            },
+            {
+                title: "場面別の使い方",
+                elements: [
+                    { type: 'subtitle', content: '具体的な場面別の使い方' },
+                    { type: 'explanation', content: 'まず、文書を作りたいときのコツです' },
+                    { type: 'explanation', content: 'メールや報告書を作るときは<br>誰に向けた文書か、何を伝えたいか、<br>どれくらいの長さか' },
+                    { type: 'explanation', content: 'この3つを伝えると<br>良い結果が得られます' }
+                ]
+            },
+            {
+                title: "データ分析の場合",
+                elements: [
+                    { type: 'explanation', content: '次に、データを分析したいときの<br>ポイントです' },
+                    { type: 'explanation', content: '数字やデータを見てもらうときは<br>どんな観点で分析してほしいか<br>はっきり伝えましょう' },
+                    { type: 'explanation', content: '売上の傾向なのか<br>問題点の発見なのか<br>目的を明確にすることが大切です' }
+                ]
+            },
+            {
+                title: "アイデア出しの場合",
+                elements: [
+                    { type: 'explanation', content: 'そして、新しいアイデアが<br>欲しいときの方法です' },
+                    { type: 'explanation', content: '新しいアイデアを求めるときは<br>予算や期間などの制約条件と<br>何を重視するかを伝えます' },
+                    { type: 'explanation', content: '実現可能な提案が欲しいなら<br>その旨も伝えておきましょう' }
+                ]
+            },
+            {
+                title: "うまくいかないとき",
+                elements: [
+                    { type: 'subtitle', content: 'うまくいかないときの対処法' },
+                    { type: 'explanation', content: '結果がイマイチだなと思ったら<br>3つのポイントをチェックしてみてください' }
+                ]
+            },
+            {
+                title: "チェックポイント",
+                elements: [
+                    { type: 'step', content: 'まず、情報は足りていますか<br>背景や条件をもう少し詳しく<br>説明してみましょう' },
+                    { type: 'step', content: '次に、指示は明確ですか<br>何をしてほしいか<br>もう一度整理してみましょう' },
+                    { type: 'step', content: '最後に、求めていることは現実的ですか<br>無理な条件を設定していないか<br>確認しましょう' }
+                ]
+            },
+            {
+                title: "改善のコツ",
+                elements: [
+                    { type: 'explanation', content: '改善するときは<br>基本版から始めて<br>少しずつ情報を足していくのがコツです' },
+                    { type: 'explanation', content: '一度に全部変えるより<br>少しずつ調整する方がうまくいきます' },
+                    { type: 'highlight', content: 'ここでも「シンプルから始める」<br>という原則が活きてきます' }
+                ]
+            },
+            {
+                title: "大切な注意点",
+                elements: [
+                    { type: 'warning', content: '⚠️ AIを使うときの<br>大切な注意点' },
+                    { type: 'explanation', content: 'AIを使うときに<br>覚えておいてほしいことがあります' }
+                ]
+            },
+            {
+                title: "注意事項",
+                elements: [
+                    { type: 'step', content: 'AIが出した情報は必ず確認<br>特に数字や事実関係は要注意です' },
+                    { type: 'step', content: 'AIの学習データには期限があるので<br>最新情報は自分で調べましょう' },
+                    { type: 'step', content: '最終的な判断は必ず人間が行う<br>AIはあくまでサポート役です' }
+                ]
+            },
+            {
+                title: "機密情報の警告",
+                elements: [
+                    { type: 'warning', content: '会社の機密情報や個人情報は<br>絶対に入力しないでくださいね' },
+                    { type: 'warning', content: 'これは本当に重要です<br>絶対に入力しない<br>これだけは必ず守ってください' }
                 ]
             },
             {
                 title: "まとめ",
                 elements: [
-                    { type: 'title', content: '今日の内容をまとめます' },
-                    { type: 'highlight', content: '「シンプルに始めて、結果を見ながら育てる」<br><br>この方法を使えば<br>誰でも効果的なプロンプトが作れます' },
+                    { type: 'principle', content: '最後に<br>今日の内容をまとめさせていただきます' },
+                    { type: 'highlight', content: '今日お話しした<br>「ゼロショット→壁打ち→プロンプトまとめ」<br>の3ステップ' },
+                    { type: 'explanation', content: 'この方法を使えば<br>誰でも効果的なプロンプトが<br>作れるようになります' }
+                ]
+            },
+            {
+                title: "最後のメッセージ",
+                elements: [
+                    { type: 'explanation', content: '最初から完璧なプロンプトを<br>作ろうとする必要はありません' },
+                    { type: 'explanation', content: 'まずは簡単なプロンプトから始めて<br>少しずつ自分好みに<br>調整していってください' },
+                    { type: 'explanation', content: 'AIは皆さんの仕事を助けてくれる<br>強力なパートナーです' }
+                ]
+            },
+            {
+                title: "お疲れさまでした",
+                elements: [
                     { type: 'title', content: 'お疲れさまでした！' },
-                    { type: 'explanation', content: '今日学んだことを<br>ぜひ実際に試してみてくださいね' },
-                    { type: 'highlight', content: '最後にもう一度だけ繰り返させてください<br><br>「シンプルに始めて、結果を見ながら育てる」<br>これさえ覚えておけば大丈夫です' },
-                    { type: 'warning', content: 'そして、機密情報は絶対に入力しない<br><br>この2つを忘れないでくださいね' },
-                    { type: 'title', content: 'それでは、プロンプト基礎の説明は以上です<br>ありがとうございました' }
+                    { type: 'explanation', content: '今日学んだことを<br>ぜひ実際に試してみてくださいね' }
+                ]
+            },
+            {
+                title: "重要ポイントの確認",
+                elements: [
+                    { type: 'explanation', content: '最後にもう一度だけ<br>繰り返させてください' },
+                    { type: 'highlight', content: '「ゼロショット→壁打ち→プロンプトまとめ」<br>の3ステップ' },
+                    { type: 'highlight', content: 'これさえ覚えておけば大丈夫です' },
+                    { type: 'warning', content: 'そして、機密情報は絶対に入力しない<br>これも忘れないでくださいね' }
+                ]
+            },
+            {
+                title: "終わり",
+                elements: [
+                    { type: 'explanation', content: 'それでは<br>プロンプト基礎の説明は以上です' },
+                    { type: 'title', content: 'ありがとうございました' }
                 ]
             }
         ];
 
         let currentSection = 0;
         let currentElement = 0;
+
+        function initializeSections() {
+            const mainContent = document.getElementById('mainContent');
+            const sideNav = document.getElementById('sideNav');
+            
+            // セクションを作成
+            sections.forEach((section, index) => {
+                const sectionDiv = document.createElement('section');
+                sectionDiv.className = `section section-${(index % 10) + 1}`;
+                sectionDiv.id = `section-${index}`;
+                mainContent.appendChild(sectionDiv);
+
+                // サイドナビのドットを作成
+                const dot = document.createElement('div');
+                dot.className = 'nav-dot';
+                if (index === 0) dot.classList.add('active');
+                dot.dataset.section = index;
+                sideNav.appendChild(dot);
+            });
+        }
 
         function updateDisplay() {
             const section = sections[currentSection];
@@ -502,7 +670,7 @@
                         // アニメーション
                         setTimeout(() => {
                             elementDiv.classList.add('active');
-                        }, 100);
+                        }, 50);
                     }
                 }
             }
@@ -529,7 +697,6 @@
                 dot.classList.toggle('active', index === currentSection);
             });
         }
-
 
         function nextStep() {
             const currentSectionObj = sections[currentSection];
@@ -562,9 +729,7 @@
             // 全セクションをクリア
             sections.forEach((_, index) => {
                 const sectionElement = document.getElementById(`section-${index}`);
-                if (index !== 0) {
-                    sectionElement.innerHTML = '';
-                }
+                sectionElement.innerHTML = '';
             });
             
             updateDisplay();
@@ -591,15 +756,16 @@
         });
 
         // サイドナビクリック
-        document.querySelectorAll('.nav-dot').forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSection = index;
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('nav-dot')) {
+                currentSection = parseInt(event.target.dataset.section);
                 currentElement = 0;
                 updateDisplay();
-            });
+            }
         });
 
         // 初期化
+        initializeSections();
         updateDisplay();
         document.body.focus();
     </script>
