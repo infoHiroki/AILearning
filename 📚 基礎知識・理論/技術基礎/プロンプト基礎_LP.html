@@ -21,6 +21,10 @@
             font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
             color: #333;
             line-height: 1.8;
+            width: 1920px;
+            height: 1080px;
+            margin: 0 auto;
+            overflow-x: hidden;
         }
 
 
@@ -32,18 +36,19 @@
 
         /* セクション共通スタイル */
         .section {
-            min-height: 100vh;
-            padding: 40px 20px;
+            height: 1080px;
+            padding: 60px 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 100%;
+            width: 1920px;
             position: relative;
+            overflow: hidden;
         }
         
         .section .element {
-            max-width: 1000px;
+            max-width: 1600px;
             width: 100%;
         }
 
@@ -62,11 +67,11 @@
         /* 要素共通スタイル */
         .element {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
             transition: all 0.5s ease-out;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             width: 100%;
-            max-width: 900px;
+            max-width: 1500px;
         }
 
         .element.active {
@@ -77,10 +82,10 @@
         /* タイトル要素 */
         .element.title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 4.5rem;
             font-weight: bold;
-            margin-bottom: 30px;
-            line-height: 1.3;
+            margin-bottom: 40px;
+            line-height: 1.1;
         }
 
         .section-1 .element.title { color: white; }
@@ -89,40 +94,40 @@
         /* サブタイトル */
         .element.subtitle {
             text-align: center;
-            font-size: 1.8rem;
+            font-size: 3rem;
             color: #764ba2;
-            margin-bottom: 25px;
+            margin-bottom: 40px;
         }
 
         /* 原則要素 */
         .element.principle {
             background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 15px;
+            padding: 50px;
+            border-radius: 25px;
             text-align: center;
-            font-size: 1.6rem;
+            font-size: 2.8rem;
             color: #764ba2;
-            border-left: 6px solid #667eea;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-left: 10px solid #667eea;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
             position: relative;
         }
         
         .element.principle::before {
             content: '💡';
-            font-size: 2rem;
+            font-size: 3.5rem;
             display: block;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
         }
 
         /* 説明要素 */
         .element.explanation {
             background: rgba(255, 255, 255, 0.9);
-            padding: 20px 30px;
-            border-radius: 12px;
+            padding: 35px 50px;
+            border-radius: 20px;
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 2rem;
             color: #555;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
             line-height: 1.8;
             word-wrap: break-word;
         }
@@ -130,267 +135,126 @@
         /* ハイライト要素 */
         .element.highlight {
             background: linear-gradient(45deg, #e3f2fd, #fff);
-            border: 2px solid #2196f3;
-            padding: 25px;
-            border-radius: 15px;
-            font-size: 1.3rem;
+            border: 3px solid #2196f3;
+            padding: 30px;
+            border-radius: 25px;
+            font-size: 1.8rem;
             color: #0d47a1;
             text-align: center;
             font-weight: bold;
-            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.2);
+            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.25);
             position: relative;
+            line-height: 1.4;
         }
         
         .element.highlight::before {
             content: '🎯';
-            font-size: 2rem;
+            font-size: 2.5rem;
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         /* ステップ要素 */
         .element.step {
             background: linear-gradient(45deg, #f3e5f5, #fff);
-            border-left: 6px solid #9c27b0;
-            padding: 20px;
-            border-radius: 12px;
-            font-size: 1.15rem;
+            border-left: 10px solid #9c27b0;
+            padding: 35px;
+            border-radius: 20px;
+            font-size: 2rem;
             color: #6a1b9a;
             position: relative;
-            padding-left: 60px;
             word-wrap: break-word;
-        }
-        
-        .element.step::before {
-            content: '▶️';
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.5rem;
+            text-align: center;
         }
 
         /* 悪い例 */
         .element.example-bad {
             background: linear-gradient(45deg, #ffebee, #fff);
-            border-left: 6px solid #f44336;
-            padding: 20px;
-            border-radius: 12px;
-            font-size: 1.15rem;
+            border-left: 10px solid #f44336;
+            padding: 35px;
+            border-radius: 20px;
+            font-size: 2rem;
             color: #c62828;
-            box-shadow: 0 4px 12px rgba(244, 67, 54, 0.2);
+            box-shadow: 0 8px 20px rgba(244, 67, 54, 0.25);
             position: relative;
-            padding-left: 60px;
             word-wrap: break-word;
             overflow-wrap: break-word;
-        }
-        
-        .element.example-bad::before {
-            content: '❌';
-            position: absolute;
-            left: 20px;
-            top: 20px;
-            font-size: 1.5rem;
+            text-align: center;
         }
 
         /* 良い例 */
         .element.example-good {
             background: linear-gradient(45deg, #e8f5e8, #fff);
-            border-left: 6px solid #4caf50;
-            padding: 20px;
-            border-radius: 12px;
-            font-size: 1.15rem;
+            border-left: 10px solid #4caf50;
+            padding: 35px;
+            border-radius: 20px;
+            font-size: 2rem;
             color: #2e7d32;
-            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.25);
             position: relative;
-            padding-left: 60px;
             word-wrap: break-word;
             overflow-wrap: break-word;
-        }
-        
-        .element.example-good::before {
-            content: '✅';
-            position: absolute;
-            left: 20px;
-            top: 20px;
-            font-size: 1.5rem;
+            text-align: center;
         }
 
         /* 矢印 */
         .element.arrow {
-            font-size: 2rem;
+            font-size: 3rem;
             color: #ff9800;
             text-align: center;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
         }
 
         /* 5つの要素 */
         .element.numbered-item {
             background: linear-gradient(45deg, #fff3e0, #fff);
-            border-left: 6px solid #ff9800;
-            padding: 18px;
-            border-radius: 12px;
-            font-size: 1.1rem;
+            border-left: 10px solid #ff9800;
+            padding: 30px;
+            border-radius: 20px;
+            font-size: 1.8rem;
             color: #e65100;
             display: flex;
             align-items: flex-start;
-            gap: 15px;
-            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.2);
+            gap: 25px;
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.25);
+            text-align: center;
+            justify-content: flex-start;
         }
 
         .number-circle {
             background: #ff9800;
             color: white;
-            width: 35px;
-            height: 35px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             flex-shrink: 0;
-            font-size: 1rem;
+            font-size: 1.8rem;
         }
 
         /* 警告要素 */
         .element.warning {
             background: linear-gradient(45deg, #fff3e0, #fff);
-            border: 2px solid #ff5722;
-            padding: 25px;
-            border-radius: 15px;
-            font-size: 1.2rem;
+            border: 3px solid #ff5722;
+            padding: 40px;
+            border-radius: 25px;
+            font-size: 2.3rem;
             color: #d84315;
             text-align: center;
             font-weight: bold;
-            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.2);
+            box-shadow: 0 10px 30px rgba(255, 87, 34, 0.25);
             position: relative;
         }
         
         .element.warning::before {
             content: '⚠️';
-            font-size: 2rem;
+            font-size: 3.5rem;
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
-        /* レスポンシブ対応 */
-        
-        /* タブレット（768px以下） */
-        @media (max-width: 768px) {
-            .section { 
-                padding: 15px 10px; 
-                min-height: 60vh;
-            }
-            
-            .element { max-width: 100%; margin-bottom: 10px; }
-            .element.title { font-size: 1.8rem; }
-            .element.subtitle { font-size: 1.3rem; }
-            .element.principle { font-size: 1.2rem; padding: 15px; }
-            .element.highlight { font-size: 1rem; padding: 15px; }
-            .element.explanation { font-size: 1rem; padding: 12px 15px; }
-            .element.step { font-size: 0.95rem; padding: 12px; padding-left: 45px; }
-            .element.example-good, .element.example-bad { 
-                font-size: 0.95rem; 
-                padding: 12px; 
-                padding-left: 45px; 
-            }
-            .element.warning { font-size: 1rem; padding: 15px; }
-            .element.numbered-item { font-size: 0.95rem; padding: 12px; }
-        }
-        
-        /* スマートフォン（480px以下） */
-        @media (max-width: 480px) {
-            .section { 
-                padding: 10px 8px; 
-                min-height: 50vh;
-            }
-            
-            .element { margin-bottom: 8px; }
-            .element.title { font-size: 1.6rem; line-height: 1.2; }
-            .element.subtitle { font-size: 1.3rem; }
-            .element.principle { 
-                font-size: 1.1rem; 
-                padding: 15px;
-                line-height: 1.6;
-            }
-            .element.highlight { 
-                font-size: 1rem; 
-                padding: 15px;
-                line-height: 1.6;
-            }
-            .element.explanation { 
-                font-size: 1rem; 
-                padding: 12px 15px;
-                line-height: 1.7;
-            }
-            .element.step { 
-                font-size: 0.95rem; 
-                padding: 12px; 
-                padding-left: 45px;
-                line-height: 1.6;
-            }
-            .element.example-good, .element.example-bad { 
-                font-size: 0.95rem; 
-                padding: 12px; 
-                padding-left: 45px;
-                line-height: 1.6;
-            }
-            .element.warning { 
-                font-size: 1rem; 
-                padding: 15px;
-                line-height: 1.6;
-            }
-            .element.numbered-item { 
-                font-size: 0.95rem; 
-                padding: 12px;
-                gap: 10px;
-            }
-            
-            .number-circle {
-                width: 30px;
-                height: 30px;
-                font-size: 0.9rem;
-            }
-            
-            /* アイコンサイズ調整 */
-            .element.step::before,
-            .element.example-good::before,
-            .element.example-bad::before {
-                font-size: 1.2rem;
-            }
-            
-            .element.principle::before,
-            .element.highlight::before,
-            .element.warning::before {
-                font-size: 1.5rem;
-            }
-        }
-        
-        /* 極小画面（360px以下） */
-        @media (max-width: 360px) {
-            .section { padding: 8px 5px; }
-            
-            .element.title { font-size: 1.4rem; }
-            .element.principle, .element.highlight, .element.warning {
-                padding: 12px;
-                font-size: 0.95rem;
-            }
-            .element.explanation { 
-                font-size: 0.95rem;
-                padding: 10px 12px;
-            }
-            .element.step, .element.example-good, .element.example-bad {
-                font-size: 0.9rem;
-                padding: 10px;
-                padding-left: 40px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -454,7 +318,7 @@
                 title: "ゼロショットの例",
                 elements: [
                     { type: 'explanation', content: '💡 たとえば、こんな感じです' },
-                    { type: 'example-good', content: '「営業メールを書いてください。<br>相手はエービーシー商事の田中部長で、<br>来週の会議について連絡したいです」' },
+                    { type: 'example-good', content: '✅ 「営業メールを書いてください。<br>相手はエービーシー商事の田中部長で、<br>来週の会議について連絡したいです」' },
                     { type: 'explanation', content: '🎉 これだけでも<br>AIはちゃんとメールを作ってくれます' }
                 ]
             },
@@ -485,16 +349,16 @@
                 title: "5つの要素",
                 elements: [
                     { type: 'explanation', content: '🔢 このプロンプトには<br>5つの要素が含まれていることが多いです' },
-                    { type: 'numbered-item', content: '<div class="number-circle">1</div><div>役割<br>「あなたは〇〇です」という設定</div>' },
-                    { type: 'numbered-item', content: '<div class="number-circle">2</div><div>状況説明<br>今どんな場面なのかの説明</div>' },
-                    { type: 'numbered-item', content: '<div class="number-circle">3</div><div>指示<br>何をしてほしいかの明確な指示</div>' }
+                    { type: 'explanation', content: '1️⃣ 役割<br>「あなたは〇〇です」という設定' },
+                    { type: 'explanation', content: '2️⃣ 状況説明<br>今どんな場面なのかの説明' },
+                    { type: 'explanation', content: '3️⃣ 指示<br>何をしてほしいかの明確な指示' }
                 ]
             },
             {
                 title: "5つの要素続き",
                 elements: [
-                    { type: 'numbered-item', content: '<div class="number-circle">4</div><div>形式<br>出力の形式の指定</div>' },
-                    { type: 'numbered-item', content: '<div class="number-circle">5</div><div>注意点<br>特に気をつけてほしいこと</div>' },
+                    { type: 'explanation', content: '4️⃣ 形式<br>出力の形式の指定' },
+                    { type: 'explanation', content: '5️⃣ 注意点<br>特に気をつけてほしいこと' },
                     { type: 'explanation', content: '😌 でも、これらを最初から<br>考える必要はありません' },
                     { type: 'explanation', content: '<i class="fas fa-seedling"></i> 壁打ちの結果として<br>自然に含まれてくるものです' }
                 ]
@@ -503,7 +367,7 @@
                 title: "完成プロンプト例",
                 elements: [
                     { type: 'explanation', content: '💡 たとえば、壁打ちの結果<br>まとめてもらったプロンプトは<br>こんな感じになります' },
-                    { type: 'example-good', content: '「あなたは営業担当者です。<br>新規顧客との初回商談が来週予定されています。<br>先方の課題をヒアリングして、<br>当社のサービスがどう役立つか提案してください。<br>提案内容は箇条書きで3つにまとめてください。<br>専門用語は使わず、分かりやすい言葉で<br>説明することを心がけてください。」' }
+                    { type: 'example-good', content: '✅ 「あなたは営業担当者です。<br>新規顧客との初回商談が来週予定されています。<br>先方の課題をヒアリングして、<br>当社のサービスがどう役立つか提案してください。<br>提案内容は箇条書きで3つにまとめてください。<br>専門用語は使わず、分かりやすい言葉で<br>説明することを心がけてください。」' }
                 ]
             },
             {
@@ -518,7 +382,7 @@
                 elements: [
                     { type: 'explanation', content: '<i class="fas fa-balance-scale"></i> ここで、良い例と悪い例を<br>比較してみましょう' },
                     { type: 'explanation', content: '🔍 ダメな例から見てみましょう' },
-                    { type: 'example-bad', content: '「良い文章を書いて」' },
+                    { type: 'example-bad', content: '❌ 「良い文章を書いて」' },
                     { type: 'explanation', content: '😕 これでは、何について書いたらいいのか<br>AIも分かりませんよね' }
                 ]
             },
@@ -526,7 +390,7 @@
                 title: "良い例",
                 elements: [
                     { type: 'explanation', content: '✨ 良い例は、こんな感じです' },
-                    { type: 'example-good', content: '「新入社員への歓迎メッセージを書いてください。<br>4月に入社する新卒10名に向けて、<br>会社を好きになってもらえるような、<br>温かいメッセージを200文字くらいでお願いします」' },
+                    { type: 'example-good', content: '✅ 「新入社員への歓迎メッセージを書いてください。<br>4月に入社する新卒10名に向けて、<br>会社を好きになってもらえるような、<br>温かいメッセージを200文字くらいでお願いします」' },
                     { type: 'explanation', content: '<i class="fas fa-thumbs-up"></i> ぐっと具体的になりましたね' }
                 ]
             },
@@ -534,17 +398,17 @@
                 title: "実際の壁打ち",
                 elements: [
                     { type: 'explanation', content: '<i class="fas fa-eye"></i> 実際の壁打ちの様子を見てみましょう' },
-                    { type: 'step', content: '最初のゼロショット：<br>「顧客への提案書を作って」' },
+                    { type: 'step', content: '🎯 最初のゼロショット：<br>「顧客への提案書を作って」' },
                     { type: 'explanation', content: '🔄 AIの出力を見て、壁打ち1回目：' },
-                    { type: 'step', content: '「IT企業向けにして」' }
+                    { type: 'step', content: '💼 「IT企業向けにして」' }
                 ]
             },
             {
                 title: "壁打ち2-4回目",
                 elements: [
-                    { type: 'step', content: '壁打ち2回目：<br>「セキュリティに特化した内容で」' },
-                    { type: 'step', content: '壁打ち3回目：<br>「読み手は中小企業の社長さん。<br>専門用語は避けて」' },
-                    { type: 'step', content: '壁打ち4回目：<br>「予算感も含めて、<br>3つのプランを提示して」' }
+                    { type: 'step', content: '🔒 壁打ち2回目：<br>「セキュリティに特化した内容で」' },
+                    { type: 'step', content: '👔 壁打ち3回目：<br>「読み手は中小企業の社長さん。<br>専門用語は避けて」' },
+                    { type: 'step', content: '💰 壁打ち4回目：<br>「予算感も含めて、<br>3つのプランを提示して」' }
                 ]
             },
             {
