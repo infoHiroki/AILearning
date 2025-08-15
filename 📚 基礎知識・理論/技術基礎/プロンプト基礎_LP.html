@@ -38,9 +38,13 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            max-width: 1000px;
-            margin: 0 auto;
+            width: 100%;
             position: relative;
+        }
+        
+        .section .element {
+            max-width: 1000px;
+            width: 100%;
         }
 
         /* セクション別背景 */
@@ -62,7 +66,7 @@
             transition: all 0.5s ease-out;
             margin-bottom: 25px;
             width: 100%;
-            max-width: 700px;
+            max-width: 900px;
         }
 
         .element.active {
@@ -396,301 +400,287 @@
     <div class="main-content" id="mainContent"></div>
 
     <script>
-        // コンテンツデータ - TTS台本に完全対応
+        // コンテンツデータ - スクリプト版に完全対応
         const sections = [
             {
                 title: "導入",
                 elements: [
                     { type: 'title', content: '🤖 プロンプト基礎' },
-                    { type: 'explanation', content: '今回はAIへの指示の出し方<br>プロンプトの基礎について学んでいきましょう' }
+                    { type: 'explanation', content: '<i class="fas fa-lightbulb"></i> 今回はAIへの指示の出し方<br>プロンプトの基礎について学んでいきましょう' }
                 ]
             },
             {
                 title: "基本的な考え方",
                 elements: [
-                    { type: 'explanation', content: 'それでは、まず最初に<br>基本的な考え方からご説明します' },
-                    { type: 'explanation', content: 'AIを使いこなすには<br>上手なプロンプトの作り方を知ることが大切です' },
-                    { type: 'explanation', content: '今日は、誰でも簡単にできる<br>プロンプトの作り方を<br>実例を交えながらご紹介します' }
+                    { type: 'explanation', content: '<i class="fas fa-book-open"></i> それでは、まず最初に<br>基本的な考え方からご説明します' },
+                    { type: 'explanation', content: '🎯 AIを使いこなすには<br>上手なプロンプトの作り方を知ることが大切です' },
+                    { type: 'explanation', content: '<i class="fas fa-hands-helping"></i> 今日は、誰でも簡単にできる<br>プロンプトの作り方を<br>実例を交えながらご紹介します' }
                 ]
             },
             {
-                title: "3ステップの方法",
+                title: "最も効果的な方法",
                 elements: [
-                    { type: 'principle', content: 'プロンプトを作る上で<br>最も効果的な方法があります' },
-                    { type: 'step', content: 'まず「ゼロショット」で始める' },
-                    { type: 'explanation', content: 'つまり、事前情報なしで<br>シンプルに「これ作って」と頼んでみる' },
-                    { type: 'step', content: '次に「壁打ち」をしていく' },
-                    { type: 'explanation', content: 'AIとやり取りを繰り返しながら<br>より良い出力になるよう調整していきます' },
-                    { type: 'step', content: 'そして最後に、いい出力が得られたら' },
-                    { type: 'explanation', content: 'AIに「今のやり取りをまとめて<br>効果的なプロンプトを作って」と頼む' }
+                    { type: 'principle', content: '🚀 プロンプトを作る上で<br>最も効果的な方法があります' }
                 ]
             },
             {
-                title: "3ステップまとめ",
+                title: "3ステップの流れ",
                 elements: [
-                    { type: 'highlight', content: 'ゼロショット<br>↓<br>壁打ち<br>↓<br>プロンプトまとめ' },
-                    { type: 'explanation', content: 'この流れが<br>実は最も実践的で効果的な方法です' }
+                    { type: 'step', content: '<i class="fas fa-play-circle"></i> まず「ゼロショット」で始める' },
+                    { type: 'explanation', content: '💬 つまり、事前情報なしで<br>シンプルに「これ作って」と頼んでみる' },
+                    { type: 'step', content: '<i class="fas fa-sync-alt"></i> 次に「壁打ち」をしていく' },
+                    { type: 'explanation', content: '⚡ AIとやり取りを繰り返しながら<br>より良い出力になるよう調整していきます' }
                 ]
             },
             {
-                title: "ステップ1: ゼロショット",
+                title: "3ステップ完成",
                 elements: [
-                    { type: 'subtitle', content: 'ステップ1: ゼロショット' },
-                    { type: 'explanation', content: 'ゼロショットとは<br>事前情報なしでいきなり<br>「なになにを作って」と頼むことです' },
-                    { type: 'explanation', content: '💪 実は多くの場合<br>このくらいシンプルなスタートで十分です' }
+                    { type: 'step', content: '🏆 そして最後に、いい出力が得られたら' },
+                    { type: 'explanation', content: '<i class="fas fa-magic"></i> AIに「今のやり取りをまとめて<br>効果的なプロンプトを作って」と頼む' },
+                    { type: 'highlight', content: '🎯 ゼロショット<br>↓<br>🔄 壁打ち<br>↓<br>📋 プロンプトまとめ' },
+                    { type: 'explanation', content: '💪 この流れが<br>実践的で効果的な方法です' }
+                ]
+            },
+            {
+                title: "ステップ1詳細",
+                elements: [
+                    { type: 'explanation', content: '<i class="fas fa-arrow-down"></i> それでは、基本的な指示の出し方から<br>見ていきましょう' },
+                    { type: 'explanation', content: '🔍 まず、ステップ1の<br>ゼロショットから説明します' },
+                    { type: 'explanation', content: '<i class="fas fa-bolt"></i> ゼロショットとは<br>事前情報なしでいきなり<br>「なになにを作って」と頼むことです' },
+                    { type: 'explanation', content: '✅ 多くの場合<br>このくらいシンプルなスタートで十分です' }
                 ]
             },
             {
                 title: "ゼロショットの例",
                 elements: [
-                    { type: 'explanation', content: 'たとえば、こんな感じです' },
-                    { type: 'example-good', content: '「営業メールを書いてください。<br>相手はABC商事の田中部長で、<br>来週の会議について連絡したいです」' },
-                    { type: 'explanation', content: '🎆 これだけでも<br>AIはちゃんとメールを作ってくれます' }
+                    { type: 'explanation', content: '💡 たとえば、こんな感じです' },
+                    { type: 'example-good', content: '「営業メールを書いてください。<br>相手はエービーシー商事の田中部長で、<br>来週の会議について連絡したいです」' },
+                    { type: 'explanation', content: '🎉 これだけでも<br>AIはちゃんとメールを作ってくれます' }
                 ]
             },
             {
-                title: "ステップ2: 壁打ち",
+                title: "ステップ2詳細",
                 elements: [
-                    { type: 'subtitle', content: 'ステップ2: 壁打ち' },
-                    { type: 'explanation', content: '最初の出力を見て' },
-                    { type: 'example-good', content: '「もうちょっとフォーマルに」<br>「件名も考えて」' },
-                    { type: 'explanation', content: '追加の指示を出していきます' }
+                    { type: 'explanation', content: '<i class="fas fa-comments"></i> 次に、ステップ2の壁打ちです' },
+                    { type: 'explanation', content: '📝 最初の出力を見て<br>「もう少しフォーマルに」とか<br>「件名も考えて」とか、追加の指示を出していきます' },
+                    { type: 'explanation', content: '<i class="fas fa-arrow-up"></i> このやり取りを繰り返すことで<br>求めている出力に近づけていきます' }
                 ]
             },
             {
                 title: "壁打ちのコツ",
                 elements: [
-                    { type: 'explanation', content: 'このやり取りを繰り返すことで<br>求めている出力に近づけていくんです' },
-                    { type: 'highlight', content: '壁打ちのコツ' },
-                    { type: 'explanation', content: '一度に全部を要求しないこと' },
-                    { type: 'explanation', content: '少しずつ調整していく方が<br>AIも理解しやすくなります' }
+                    { type: 'explanation', content: '💡 壁打ちのコツは<br>一度に全部を要求しないこと' },
+                    { type: 'explanation', content: '<i class="fas fa-step-forward"></i> 少しずつ調整していく方が<br>AIも理解しやすくなります' }
                 ]
             },
             {
-                title: "ステップ3: プロンプトまとめ",
+                title: "ステップ3詳細",
                 elements: [
-                    { type: 'subtitle', content: 'ステップ3: プロンプトまとめ' },
-                    { type: 'explanation', content: 'いい出力が得られたら、こう頼みます' },
-                    { type: 'example-good', content: '「今までのやり取りをまとめて<br>一発で同じような出力が得られる<br>プロンプトを作って」' }
+                    { type: 'explanation', content: '<i class="fas fa-flag-checkered"></i> そして、ステップ3の<br>プロンプトまとめです' },
+                    { type: 'explanation', content: '📋 いい出力が得られたら<br>「今までのやり取りをまとめて<br>同じような出力が得られる<br>プロンプトを作って」と頼みます' },
+                    { type: 'explanation', content: '<i class="fas fa-magic"></i> そうすると、AIが<br>効果的なプロンプトを作ってくれます' }
                 ]
             },
             {
                 title: "5つの要素",
                 elements: [
-                    { type: 'explanation', content: 'すると、AIが効果的なプロンプトを<br>作ってくれます' },
-                    { type: 'explanation', content: 'このプロンプトには<br>実は5つの要素が含まれていることが<br>多いのです' }
-                ]
-            },
-            {
-                title: "5つの要素詳細",
-                elements: [
+                    { type: 'explanation', content: '🔢 このプロンプトには<br>5つの要素が含まれていることが多いです' },
                     { type: 'numbered-item', content: '<div class="number-circle">1</div><div>役割<br>「あなたは〇〇です」という設定</div>' },
                     { type: 'numbered-item', content: '<div class="number-circle">2</div><div>状況説明<br>今どんな場面なのかの説明</div>' },
-                    { type: 'numbered-item', content: '<div class="number-circle">3</div><div>指示<br>何をしてほしいかの明確な指示</div>' },
+                    { type: 'numbered-item', content: '<div class="number-circle">3</div><div>指示<br>何をしてほしいかの明確な指示</div>' }
+                ]
+            },
+            {
+                title: "5つの要素続き",
+                elements: [
                     { type: 'numbered-item', content: '<div class="number-circle">4</div><div>形式<br>出力の形式の指定</div>' },
-                    { type: 'numbered-item', content: '<div class="number-circle">5</div><div>注意点<br>特に気をつけてほしいこと</div>' }
+                    { type: 'numbered-item', content: '<div class="number-circle">5</div><div>注意点<br>特に気をつけてほしいこと</div>' },
+                    { type: 'explanation', content: '😌 でも、これらを最初から<br>考える必要はありません' },
+                    { type: 'explanation', content: '<i class="fas fa-seedling"></i> 壁打ちの結果として<br>自然に含まれてくるものです' }
                 ]
             },
             {
-                title: "5つの要素の考え方",
+                title: "完成プロンプト例",
                 elements: [
-                    { type: 'explanation', content: 'でも、これらを最初から<br>考える必要はありません' },
-                    { type: 'highlight', content: '壁打ちの結果として<br>自然に含まれてくるものなのです' }
-                ]
-            },
-            {
-                title: "完成プロンプトの例",
-                elements: [
-                    { type: 'explanation', content: 'たとえば、壁打ちの結果<br>まとめてもらったプロンプトは<br>こんな感じになります' },
+                    { type: 'explanation', content: '💡 たとえば、壁打ちの結果<br>まとめてもらったプロンプトは<br>こんな感じになります' },
                     { type: 'example-good', content: '「あなたは営業担当者です。<br>新規顧客との初回商談が来週予定されています。<br>先方の課題をヒアリングして、<br>当社のサービスがどう役立つか提案してください。<br>提案内容は箇条書きで3つにまとめてください。<br>専門用語は使わず、分かりやすい言葉で<br>説明することを心がけてください。」' }
                 ]
             },
             {
-                title: "プロンプトの再利用",
+                title: "プロンプト再利用",
                 elements: [
-                    { type: 'explanation', content: '🔄 このプロンプトは<br>次回から一発で使えます' },
-                    { type: 'highlight', content: '⏰ 時間の節約になりますね' }
+                    { type: 'explanation', content: '🔄 このプロンプトを残しておけば<br>繰り返し使えます' },
+                    { type: 'explanation', content: '<i class="fas fa-clock"></i> 時間の節約になりますね' }
                 ]
             },
             {
-                title: "悪い例",
+                title: "良い例と悪い例",
                 elements: [
-                    { type: 'explanation', content: 'ここで、良い例と悪い例を<br>比較してみましょう' },
-                    { type: 'example-bad', content: '悪い例<br><br>「良い文章を書いて」' },
-                    { type: 'explanation', content: 'これでは、AIも<br>何を書いていいか分かりませんよね' }
+                    { type: 'explanation', content: '<i class="fas fa-balance-scale"></i> ここで、良い例と悪い例を<br>比較してみましょう' },
+                    { type: 'explanation', content: '🔍 ダメな例から見てみましょう' },
+                    { type: 'example-bad', content: '「良い文章を書いて」' },
+                    { type: 'explanation', content: '😕 これでは、何について書いたらいいのか<br>AIも分かりませんよね' }
                 ]
             },
             {
                 title: "良い例",
                 elements: [
-                    { type: 'example-good', content: '良い例<br><br>「新入社員への歓迎メッセージを書いてください。<br>4月に入社する新卒10名に向けて、<br>会社を好きになってもらえるような、<br>温かいメッセージを200文字くらいでお願いします」' },
-                    { type: 'explanation', content: '✨ ぐっと具体的になりましたね' }
+                    { type: 'explanation', content: '✨ 良い例は、こんな感じです' },
+                    { type: 'example-good', content: '「新入社員への歓迎メッセージを書いてください。<br>4月に入社する新卒10名に向けて、<br>会社を好きになってもらえるような、<br>温かいメッセージを200文字くらいでお願いします」' },
+                    { type: 'explanation', content: '<i class="fas fa-thumbs-up"></i> ぐっと具体的になりましたね' }
                 ]
             },
             {
-                title: "壁打ちの実例",
+                title: "実際の壁打ち",
                 elements: [
-                    { type: 'principle', content: '実際の壁打ちの様子を<br>見てみましょう' },
-                    { type: 'step', content: '最初のゼロショット：<br>「顧客への提案書を作って」' }
-                ]
-            },
-            {
-                title: "壁打ち1回目",
-                elements: [
-                    { type: 'explanation', content: 'AIの出力を見て、壁打ち1回目' },
+                    { type: 'explanation', content: '<i class="fas fa-eye"></i> 実際の壁打ちの様子を見てみましょう' },
+                    { type: 'step', content: '最初のゼロショット：<br>「顧客への提案書を作って」' },
+                    { type: 'explanation', content: '🔄 AIの出力を見て、壁打ち1回目：' },
                     { type: 'step', content: '「IT企業向けにして」' }
                 ]
             },
             {
-                title: "壁打ち2回目",
+                title: "壁打ち2-4回目",
                 elements: [
-                    { type: 'explanation', content: '壁打ち2回目' },
-                    { type: 'step', content: '「セキュリティに特化した内容で」' }
-                ]
-            },
-            {
-                title: "壁打ち3回目",
-                elements: [
-                    { type: 'explanation', content: '壁打ち3回目' },
-                    { type: 'step', content: '「読み手は中小企業の社長さん。<br>専門用語は避けて」' }
-                ]
-            },
-            {
-                title: "壁打ち4回目",
-                elements: [
-                    { type: 'explanation', content: '壁打ち4回目' },
-                    { type: 'step', content: '「予算感も含めて、<br>3つのプランを提示して」' }
+                    { type: 'step', content: '壁打ち2回目：<br>「セキュリティに特化した内容で」' },
+                    { type: 'step', content: '壁打ち3回目：<br>「読み手は中小企業の社長さん。<br>専門用語は避けて」' },
+                    { type: 'step', content: '壁打ち4回目：<br>「予算感も含めて、<br>3つのプランを提示して」' }
                 ]
             },
             {
                 title: "壁打ちの効果",
                 elements: [
                     { type: 'explanation', content: '📈 このように壁打ちを繰り返していくと<br>どんどん出力が良くなっていきます' },
-                    { type: 'highlight', content: 'そして最後に<br>「今のやり取りをまとめて<br>プロンプトを作って」と頼むと' },
+                    { type: 'explanation', content: '<i class="fas fa-magic"></i> そして最後に<br>「今のやり取りをまとめて<br>プロンプトを作って」と頼むと' },
                     { type: 'explanation', content: '🎉 次回から使える<br>効率的なプロンプトが完成します' }
                 ]
             },
             {
-                title: "上級者向けのコツ",
+                title: "さらなるコツ",
                 elements: [
-                    { type: 'explanation', content: '次に、プロンプトを効率化する<br>ちょっとしたコツをご紹介します' },
-                    { type: 'explanation', content: 'たくさんの情報を整理して伝える方法や<br>毎回同じ設定を使い回す方法などがあります' },
-                    { type: 'explanation', content: 'たとえば、XMLタグで情報を整理したり<br>システムプロンプトで役割を固定したり' }
+                    { type: 'explanation', content: '<i class="fas fa-plus"></i> さらに、少しだけ<br>プロンプトのコツをご紹介します' },
+                    { type: 'explanation', content: '👀 具体的な場面別の使い方を<br>見ていきましょう' }
                 ]
             },
             {
-                title: "今日の3ステップ",
+                title: "文書作成のコツ",
                 elements: [
-                    { type: 'explanation', content: 'でも、これらは少し上級者向けの内容なので<br>詳しくは別のセクションで説明します' },
-                    { type: 'highlight', content: 'まずは今日お話しした3ステップを<br>しっかりマスターしてくださいね' }
+                    { type: 'explanation', content: '📝 まず、文書を作りたいときのコツです' },
+                    { type: 'explanation', content: '<i class="fas fa-list"></i> メールや報告書を作るときは<br>誰に向けた文書か、何を伝えたいか、<br>どれくらいの長さか' },
+                    { type: 'explanation', content: '✨ この3つを伝えると<br>良い結果が得られます' }
                 ]
             },
             {
-                title: "場面別の使い方",
+                title: "データ分析のポイント",
                 elements: [
-                    { type: 'subtitle', content: '具体的な場面別の使い方' },
-                    { type: 'explanation', content: 'まず、文書を作りたいときのコツです' },
-                    { type: 'explanation', content: 'メールや報告書を作るときは<br>誰に向けた文書か、何を伝えたいか、<br>どれくらいの長さか' },
-                    { type: 'explanation', content: 'この3つを伝えると<br>良い結果が得られます' }
+                    { type: 'explanation', content: '📈 次に、データを分析したいときの<br>ポイントです' },
+                    { type: 'explanation', content: '<i class="fas fa-search"></i> 数字やデータを見てもらうときは<br>どんな観点で分析してほしいか<br>はっきり伝えましょう' },
+                    { type: 'explanation', content: '🎯 売上の傾向なのか、問題点の発見なのか<br>目的を明確にすることが大切です' }
                 ]
             },
             {
-                title: "データ分析の場合",
+                title: "アイデア出しの方法",
                 elements: [
-                    { type: 'explanation', content: '次に、データを分析したいときの<br>ポイントです' },
-                    { type: 'explanation', content: '数字やデータを見てもらうときは<br>どんな観点で分析してほしいか<br>はっきり伝えましょう' },
-                    { type: 'explanation', content: '売上の傾向なのか<br>問題点の発見なのか<br>目的を明確にすることが大切です' }
+                    { type: 'explanation', content: '💡 そして、新しいアイデアが<br>欲しいときの方法です' },
+                    { type: 'explanation', content: '<i class="fas fa-cogs"></i> 新しいアイデアを求めるときは<br>予算や期間などの制約条件と<br>何を重視するかを伝えます' },
+                    { type: 'explanation', content: '✅ 実現可能な提案が欲しいなら<br>その旨も伝えておきましょう' }
                 ]
             },
             {
-                title: "アイデア出しの場合",
+                title: "対処法",
                 elements: [
-                    { type: 'explanation', content: 'そして、新しいアイデアが<br>欲しいときの方法です' },
-                    { type: 'explanation', content: '新しいアイデアを求めるときは<br>予算や期間などの制約条件と<br>何を重視するかを伝えます' },
-                    { type: 'explanation', content: '実現可能な提案が欲しいなら<br>その旨も伝えておきましょう' }
+                    { type: 'explanation', content: '<i class="fas fa-tools"></i> では、うまくいかないときの<br>対処法をお伝えします' },
+                    { type: 'explanation', content: '🔍 結果がイマイチだなと思ったら<br>3つのポイントをチェックしてみてください' }
                 ]
             },
             {
-                title: "うまくいかないとき",
+                title: "3つのチェック",
                 elements: [
-                    { type: 'subtitle', content: 'うまくいかないときの対処法' },
-                    { type: 'explanation', content: '結果がイマイチだなと思ったら<br>3つのポイントをチェックしてみてください' }
-                ]
-            },
-            {
-                title: "チェックポイント",
-                elements: [
-                    { type: 'step', content: 'まず、情報は足りていますか<br>背景や条件をもう少し詳しく<br>説明してみましょう' },
-                    { type: 'step', content: '次に、指示は明確ですか<br>何をしてほしいか<br>もう一度整理してみましょう' },
-                    { type: 'step', content: '最後に、求めていることは現実的ですか<br>無理な条件を設定していないか<br>確認しましょう' }
+                    { type: 'step', content: '<i class="fas fa-info-circle"></i> まず、情報は足りているかどうか<br>背景や条件をもう少し詳しく<br>説明してみましょう' },
+                    { type: 'step', content: '🎯 次に、指示が明確かどうか<br>何をしてほしいか<br>もう一度整理してみましょう' },
+                    { type: 'step', content: '<i class="fas fa-balance-scale"></i> 最後に、求めていることは現実的かどうか<br>無理な条件を設定していないか<br>確認しましょう' }
                 ]
             },
             {
                 title: "改善のコツ",
                 elements: [
-                    { type: 'explanation', content: '改善するときは<br>基本版から始めて<br>少しずつ情報を足していくのがコツです' },
-                    { type: 'explanation', content: '一度に全部変えるより<br>少しずつ調整する方がうまくいきます' },
-                    { type: 'highlight', content: 'ここでも「シンプルから始める」<br>という原則が活きてきます' }
+                    { type: 'explanation', content: '🔄 改善するときは<br>基本版から始めて<br>少しずつ情報を足していくのがコツです' },
+                    { type: 'explanation', content: '<i class="fas fa-step-forward"></i> 一度に全部変えるより<br>少しずつ調整する方がうまくいきます' }
                 ]
             },
             {
-                title: "大切な注意点",
+                title: "上級者向け",
                 elements: [
-                    { type: 'warning', content: '⚠️ AIを使うときの<br>大切な注意点' },
-                    { type: 'explanation', content: 'AIを使うときに<br>覚えておいてほしいことがあります' }
+                    { type: 'explanation', content: '<i class="fas fa-layer-group"></i> 他にもプロンプトには<br>たくさんの情報を整理して伝える方法や<br>毎回同じ設定を使い回す方法などがあります' },
+                    { type: 'explanation', content: '📝 たとえば、XMLタグで情報を整理したり<br>システムプロンプトで役割を固定したり' },
+                    { type: 'explanation', content: '<i class="fas fa-graduation-cap"></i> これらは少し上級者向けの内容なので<br>詳しくは別のセクションで説明します' }
+                ]
+            },
+            {
+                title: "3ステップ重要性",
+                elements: [
+                    { type: 'explanation', content: '<i class="fas fa-lightbulb"></i> 今回紹介した方法以外にも<br>工夫する余地があることを<br>知っておいてください' },
+                    { type: 'highlight', content: '⭐ まずは今日お話しした3ステップを<br>しっかりマスターしてくださいね' }
+                ]
+            },
+            {
+                title: "注意点導入",
+                elements: [
+                    { type: 'explanation', content: '<i class="fas fa-exclamation-circle"></i> ここで、AIを使うときの<br>大切な注意点をお話しします' },
+                    { type: 'explanation', content: '💭 AIを使うときに<br>覚えておいてほしいことがあります' }
                 ]
             },
             {
                 title: "注意事項",
                 elements: [
-                    { type: 'step', content: 'AIが出した情報は必ず確認<br>特に数字や事実関係は要注意です' },
-                    { type: 'step', content: 'AIの学習データには期限があるので<br>最新情報は自分で調べましょう' },
-                    { type: 'step', content: '最終的な判断は必ず人間が行う<br>AIはあくまでサポート役です' }
+                    { type: 'step', content: '<i class="fas fa-check-double"></i> まず、AIが出した情報は必ず確認してください<br>特に数字や事実関係は要注意です' },
+                    { type: 'step', content: '📅 また、AIの学習データには期限があるので<br>最新情報は自分で調べましょう' },
+                    { type: 'step', content: '🤝 そして最も大切なのは<br>最終的な判断は必ず人間が行うということ<br>AIはあくまでサポート役です' }
                 ]
             },
             {
-                title: "機密情報の警告",
+                title: "機密情報警告",
                 elements: [
-                    { type: 'warning', content: '会社の機密情報や個人情報は<br>絶対に入力しないでくださいね' },
-                    { type: 'warning', content: 'これは本当に重要です<br>絶対に入力しない<br>これだけは必ず守ってください' }
+                    { type: 'warning', content: '🔐 会社の機密情報や個人情報は<br>絶対に入力しないでくださいね' },
+                    { type: 'warning', content: '<i class="fas fa-exclamation-triangle"></i> これは本当に重要です<br>機密情報は絶対に入力しない<br>これだけは必ず守ってください' }
                 ]
             },
             {
-                title: "まとめ",
+                title: "まとめ導入",
                 elements: [
-                    { type: 'principle', content: '最後に<br>今日の内容をまとめさせていただきます' },
-                    { type: 'highlight', content: '今日お話しした<br>「ゼロショット→壁打ち→プロンプトまとめ」<br>の3ステップ' },
-                    { type: 'explanation', content: 'この方法を使えば<br>誰でも効果的なプロンプトが<br>作れるようになります' }
+                    { type: 'explanation', content: '<i class="fas fa-list-ul"></i> 最後に<br>今日の内容をまとめさせていただきます' },
+                    { type: 'highlight', content: '🎯 今日お話しした<br>「ゼロショット→壁打ち→プロンプトまとめ」<br>の3ステップ' },
+                    { type: 'explanation', content: '✨ この方法を使えば<br>誰でも効果的なプロンプトが<br>作れるようになります' }
                 ]
             },
             {
-                title: "最後のメッセージ",
+                title: "まとめメッセージ",
                 elements: [
-                    { type: 'explanation', content: '最初から完璧なプロンプトを<br>作ろうとする必要はありません' },
-                    { type: 'explanation', content: 'まずは簡単なプロンプトから始めて<br>少しずつ自分好みに<br>調整していってください' },
-                    { type: 'explanation', content: '🤝 AIは皆さんの仕事を助けてくれる<br>強力なパートナーです' }
+                    { type: 'explanation', content: '😌 最初から完璧なプロンプトを<br>作ろうとする必要はありません' },
+                    { type: 'explanation', content: '<i class="fas fa-step-forward"></i> まずは簡単なプロンプトから始めて<br>少しずつ自分好みに<br>調整していってください' },
+                    { type: 'explanation', content: '🤖 AIは皆さんの仕事を助けてくれる<br>強力なパートナーです' }
                 ]
             },
             {
-                title: "お疲れさまでした",
+                title: "お疲れさま",
                 elements: [
                     { type: 'title', content: '🎉 お疲れさまでした！' },
-                    { type: 'explanation', content: '今日学んだことを<br>ぜひ実際に試してみてくださいね' }
+                    { type: 'explanation', content: '<i class="fas fa-hands-clapping"></i> 今日学んだことを<br>ぜひ実際に試してみてくださいね' }
                 ]
             },
             {
-                title: "重要ポイントの確認",
+                title: "最重要ポイント",
                 elements: [
-                    { type: 'explanation', content: '最後にもう一度だけ<br>繰り返させてください' },
-                    { type: 'highlight', content: '「ゼロショット→壁打ち→プロンプトまとめ」<br>の3ステップ' },
-                    { type: 'highlight', content: 'これさえ覚えておけば大丈夫です' },
-                    { type: 'warning', content: 'そして、機密情報は絶対に入力しない<br>これも忘れないでくださいね' }
+                    { type: 'explanation', content: '<i class="fas fa-redo"></i> 最後にもう一度だけ繰り返させてください' },
+                    { type: 'highlight', content: '🎯 「ゼロショット→壁打ち→プロンプトまとめ」<br>の3ステップ' },
+                    { type: 'explanation', content: '<i class="fas fa-check-circle"></i> これさえ覚えておけば大丈夫です' },
+                    { type: 'warning', content: '<i class="fas fa-shield-alt"></i> そして、機密情報は絶対に入力しない<br>これも忘れないでくださいね' }
                 ]
             },
             {
-                title: "終わり",
+                title: "終了",
                 elements: [
-                    { type: 'explanation', content: 'それでは<br>プロンプト基礎の説明は以上です' },
+                    { type: 'explanation', content: '<i class="fas fa-flag-checkered"></i> それでは<br>プロンプト基礎の説明は以上です' },
                     { type: 'title', content: '🙏 ありがとうございました' }
                 ]
             }
@@ -782,6 +772,26 @@
             updateDisplay();
         }
 
+        function showAllContent() {
+            // 全セクションの全要素を表示
+            sections.forEach((section, sectionIndex) => {
+                const sectionElement = document.getElementById(`section-${sectionIndex}`);
+                sectionElement.innerHTML = '';
+                
+                // 各セクションの全要素を追加
+                section.elements.forEach((element, elementIndex) => {
+                    const elementDiv = document.createElement('div');
+                    elementDiv.className = `element ${element.type} active`;
+                    elementDiv.innerHTML = element.content;
+                    sectionElement.appendChild(elementDiv);
+                });
+            });
+            
+            // 最初のセクションにスクロール
+            const firstSection = document.getElementById('section-0');
+            firstSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
         // キーボード操作
         document.addEventListener('keydown', function(event) {
             switch(event.key) {
@@ -798,6 +808,11 @@
                 case 'R':
                     event.preventDefault();
                     resetPresentation();
+                    break;
+                case 'l':
+                case 'L':
+                    event.preventDefault();
+                    showAllContent();
                     break;
             }
         });
