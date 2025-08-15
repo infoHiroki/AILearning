@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロンプト基礎 - サムネイル</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic Pro', 'Noto Sans JP', -apple-system, 'Yu Gothic', sans-serif;
+            width: 1280px;
+            height: 720px;
+            margin: 0;
+            padding: 40px;
+            background: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Blob背景 */
+        .blob-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(8px);
+        }
+
+        .blob-1 {
+            width: 800px;
+            height: 800px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            top: -400px;
+            left: -300px;
+            border-radius: 73% 27% 83% 17% / 72% 39% 61% 28%;
+            transform: rotate(45deg);
+        }
+
+        .blob-2 {
+            width: 700px;
+            height: 700px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            bottom: -300px;
+            right: -150px;
+            border-radius: 39% 61% 27% 73% / 56% 23% 77% 44%;
+            transform: rotate(-30deg);
+        }
+
+        .blob-3 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            top: -100px;
+            right: -200px;
+            border-radius: 68% 32% 49% 51% / 43% 79% 21% 57%;
+            transform: rotate(15deg);
+        }
+
+        /* メインタイトル */
+        .main-title {
+            font-size: 180px;
+            font-weight: 900;
+            color: #000000;
+            text-align: center;
+            line-height: 1;
+            margin-bottom: 80px;
+            text-shadow: 
+                8px 8px 20px rgba(0, 0, 0, 0.3),
+                12px 12px 40px rgba(0, 0, 0, 0.2),
+                16px 16px 60px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.08em;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* プロンプトの文字を個別調整 */
+        .title-char {
+            display: inline-block;
+        }
+        
+        .char-プ { margin-right: -5px; }
+        .char-ロ { margin-right: -8px; }
+        .char-ン { margin-right: -10px; }
+        .char-プ2 { margin-right: -8px; }
+        .char-ト { margin-right: -5px; }
+        .char-基 { margin-right: -5px; }
+
+        /* 3ステップコンテナ */
+        .steps-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ステップボックス */
+        .step-box {
+            background: #FFFFFF;
+            border: 3px solid #000000;
+            border-radius: 20px;
+            padding: 30px 40px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 
+                6px 6px 20px rgba(0, 0, 0, 0.3),
+                10px 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .step-number {
+            font-size: 60px;
+            font-weight: 900;
+            color: #000000;
+            margin-bottom: 15px;
+            opacity: 0.2;
+        }
+
+        .step-title {
+            font-size: 36px;
+            font-weight: 900;
+            color: #000000;
+            margin-bottom: 10px;
+        }
+
+        .step-desc {
+            font-size: 20px;
+            font-weight: 700;
+            color: #444444;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <!-- Blob背景 -->
+    <div class="blob-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- メインタイトル -->
+    <div class="main-title">
+        <span class="title-char char-プ">プ</span><span class="title-char char-ロ">ロ</span><span class="title-char char-ン">ン</span><span class="title-char char-プ2">プ</span><span class="title-char char-ト">ト</span><span class="title-char char-基">基</span><span class="title-char char-礎">礎</span>
+    </div>
+
+    <!-- 3ステップ -->
+    <div class="steps-container">
+        <div class="step-box">
+            <div class="step-number">1</div>
+            <div class="step-title">ゼロショット</div>
+            <div class="step-desc">シンプルに始める</div>
+        </div>
+
+        <div class="step-box">
+            <div class="step-number">2</div>
+            <div class="step-title">壁打ち</div>
+            <div class="step-desc">対話で改善</div>
+        </div>
+
+        <div class="step-box">
+            <div class="step-number">3</div>
+            <div class="step-title">まとめ</div>
+            <div class="step-desc">プロンプト完成</div>
+        </div>
+    </div>
+</body>
+</html>
