@@ -35,9 +35,15 @@ def clean_markdown_for_speech(text: str) -> str:
     """
     Markdown記号を音声読み上げ用にクリーンアップ
     
-    KISS原則: 最も一般的な記号のみ処理
+    ⚠️ CLAUDE.mdルール違反機能
+    この機能は段階的に廃止予定
+    台本ファイルで直接Markdown記号を削除することを推奨
     """
     import re
+    
+    # CLAUDE.mdルール違反の警告
+    print("⚠️ 警告: Markdownクリーンアップ機能はCLAUDE.mdルール違反です")
+    print("台本ファイルで直接Markdown記号を削除してください")
     
     # 見出し記号削除
     text = re.sub(r'^#+\s*', '', text, flags=re.MULTILINE)
@@ -131,9 +137,10 @@ def convert_text_to_speech(text: str) -> bytes:
     )
     
     # 音声形式（MP3、高品質設定）
+    # CLAUDE.mdルール準拠：speaking_rate=0.9（やや遅めの自然なポーズ）
     audio_config = texttospeech.AudioConfig(
         audio_encoding=texttospeech.AudioEncoding.MP3,
-        speaking_rate=1.0,  # 標準速度
+        speaking_rate=0.9,  # CLAUDE.mdルール準拠（やや遅め）
         pitch=0.0,          # 標準ピッチ
         volume_gain_db=0.0  # 標準音量
     )
