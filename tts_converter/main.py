@@ -20,9 +20,9 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 使用例:
-  python main_gemini.py プロンプト基礎_TTS.md プロンプト基礎.wav
-  python main_gemini.py samples/sample_tts.md output.wav --voice Leda
-  python main_gemini.py --list-voices  # 利用可能な音声一覧
+  python main.py プロンプト基礎_TTS.md プロンプト基礎.wav
+  python main.py samples/sample_tts.md output.wav --voice Leda
+  python main.py --list-voices  # 利用可能な音声一覧
         """
     )
     
