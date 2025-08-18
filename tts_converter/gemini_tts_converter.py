@@ -9,6 +9,7 @@ CLAUDE.mdルールに従った改善実装：
 - .env環境変数での安全なAPIキー管理
 """
 import os
+import time
 from pathlib import Path
 from typing import Union
 import wave
@@ -74,7 +75,7 @@ def split_text_by_length(text: str, max_length: int = 2000) -> list[str]:
     return chunks
 
 
-def convert_text_to_speech_gemini(text: str, voice_name: str = "Leda") -> bytes:
+def convert_text_to_speech_gemini(text: str, voice_name: str = "Leda", debug: bool = False) -> bytes:
     """
     Gemini APIでテキストを音声データに変換
     
@@ -123,12 +124,24 @@ def convert_text_to_speech_gemini(text: str, voice_name: str = "Leda") -> bytes:
         )
     )
     
-    # TTS実行
-    response = client.models.generate_content(
-        model="gemini-2.5-flash-preview-tts",
-        contents=prompt,
-        config=config
-    )
+    # TTS実行（レート制限対応）
+    if debug:
+        print(f"Gemini API呼び出し開始 - テキスト長: {len(text)}文字")
+    
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash-preview-tts",
+            contents=prompt,
+            config=config
+        )
+        
+        if debug:
+            print("Gemini API呼び出し成功")
+            
+    except Exception as e:
+        if debug:
+            print(f"Gemini API呼び出しエラー: {e}")
+        raise
     
     # 音声データ取得（PCM形式）
     audio_data = response.candidates[0].content.parts[0].inline_data.data
@@ -152,7 +165,7 @@ def save_audio_file_wav(audio_data: bytes, output_path: Union[str, Path]) -> Non
         wf.writeframes(audio_data)
 
 
-def convert_long_text_to_speech_gemini(text: str, voice_name: str = "Leda") -> bytes:
+def convert_long_text_to_speech_gemini(text: str, voice_name: str = "Leda", debug: bool = False) -> bytes:
     """
     長文テキストを分割してGemini TTS変換し、音声を結合
     
@@ -173,16 +186,25 @@ def convert_long_text_to_speech_gemini(text: str, voice_name: str = "Leda") -> b
     # 各チャンクを音声変換
     audio_chunks = []
     for i, chunk in enumerate(text_chunks):
-        print(f"Gemini TTS: チャンク {i+1}/{len(text_chunks)} を変換中...")
-        audio_data = convert_text_to_speech_gemini(chunk, voice_name)
+        if debug:
+            print(f"Gemini TTS: チャンク {i+1}/{len(text_chunks)} を変換中...")
+            print(f"チャンク内容: {chunk[:100]}...")
+        
+        audio_data = convert_text_to_speech_gemini(chunk, voice_name, debug)
         audio_chunks.append(audio_data)
+        
+        # レート制限対策：チャンク間で1秒待機
+        if i < len(text_chunks) - 1:  # 最後のチャンク以外
+            if debug:
+                print("レート制限対策で1秒待機中...")
+            time.sleep(1)
     
     # 音声データの結合（PCMデータの直接結合）
     return b''.join(audio_chunks)
 
 
 def process_tts_file_gemini(input_file: Union[str, Path], output_file: Union[str, Path], 
-                           voice_name: str = "Leda") -> Path:
+                           voice_name: str = "Leda", debug: bool = False) -> Path:
     """
     TTSファイルをGemini API使用で音声ファイルに変換
     
@@ -202,7 +224,7 @@ def process_tts_file_gemini(input_file: Union[str, Path], output_file: Union[str
     text_content = read_tts_file(input_file)
     
     # Gemini TTS変換
-    audio_data = convert_long_text_to_speech_gemini(text_content, voice_name)
+    audio_data = convert_long_text_to_speech_gemini(text_content, voice_name, debug)
     
     # WAVファイルとして保存
     save_audio_file_wav(audio_data, output_file)

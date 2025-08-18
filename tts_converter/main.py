@@ -54,6 +54,12 @@ def main():
         help="利用可能な音声一覧を表示"
     )
     
+    parser.add_argument(
+        "--debug", "-d",
+        action="store_true", 
+        help="デバッグモード（詳細なログ出力）"
+    )
+    
     args = parser.parse_args()
     
     # 音声一覧表示
@@ -96,7 +102,7 @@ def main():
         print(f"  音声: {args.voice}")
         print()
         
-        result_path = process_tts_file_gemini(input_path, output_path, args.voice)
+        result_path = process_tts_file_gemini(input_path, output_path, args.voice, args.debug)
         
         print(f"✅ 変換完了: {result_path}")
         if result_path.exists():
