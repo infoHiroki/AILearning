@@ -60,15 +60,8 @@ python main.py --list-voices
 4. **接続詞調整**: `そこで次は` → `そこで、次は`
 5. **Markdown記号削除**: `**太字**` → `太字`
 
-### ❌ 避けるべき
-```python
-# プログラムでの自動クリーンアップ（CLAUDE.mdルール違反）
-cleaned_text = clean_markdown_for_speech(text)
-```
-
-### ✅ 推奨
+### 台本ファイル例
 ```markdown
-<!-- 台本ファイルで直接編集 -->
 はじめに。
 
 今回は、プロンプト基礎について学んでいきましょう。
