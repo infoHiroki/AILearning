@@ -1,4 +1,4 @@
-# TTS Converter - Gemini API版
+# TTS Converter
 
 ## 🎯 概要
 
@@ -6,23 +6,6 @@ CLAUDE.mdルールに準拠したTTSシステム：
 - Gemini API使用でコスト削減（現在無料プレビュー）
 - Markdown記号は台本ファイルで事前削除
 - 高品質な音声生成（30種類の音声選択可能）
-- **Google Cloud TTSから完全移行済み**
-
-## 🚀 改善ポイント
-
-### ✅ CLAUDE.mdルール準拠
-- ❌ プログラムでのMarkdown自動クリーンアップを廃止
-- ✅ 台本ファイルでの直接修正方式に変更
-- ✅ 技術的負債の解消
-
-### 💰 コスト改善
-- **旧システム**: Google Cloud TTS（従量課金）
-- **新システム**: Gemini TTS（現在無料プレビュー）
-
-### 🎵 音声品質向上
-- 30種類の音声から選択可能
-- より自然な音声生成
-- 24言語サポート
 
 ## 📦 セットアップ
 
@@ -35,7 +18,7 @@ pip install -r requirements.txt
 
 **永続設定（推奨）:**
 ```bash
-# セットアップスクリプト実行（API키と.envファイルを設定）
+# セットアップスクリプト実行（APIキーと.envファイルを設定）
 ./setup_env.sh
 ```
 
@@ -77,13 +60,13 @@ python main.py --list-voices
 4. **接続詞調整**: `そこで次は` → `そこで、次は`
 5. **Markdown記号削除**: `**太字**` → `太字`
 
-### ❌ 避けるべき（旧方式）
+### ❌ 避けるべき
 ```python
 # プログラムでの自動クリーンアップ（CLAUDE.mdルール違反）
 cleaned_text = clean_markdown_for_speech(text)
 ```
 
-### ✅ 推奨（新方式）
+### ✅ 推奨
 ```markdown
 <!-- 台本ファイルで直接編集 -->
 はじめに。
@@ -99,9 +82,6 @@ cleaned_text = clean_markdown_for_speech(text)
 ```bash
 # Gemini TTS機能のテスト
 pytest tests/test_gemini_tts_converter.py -v
-
-# 既存システムとの比較テスト
-INTEGRATION_TEST=1 pytest tests/test_gemini_tts_converter.py::test_gemini_vs_google_cloud_tts_comparison -v
 ```
 
 ### 手動テスト
@@ -112,34 +92,6 @@ python main.py tests/samples/sample_tts.md test_output.wav
 # 複数音声でテスト
 python main.py tests/samples/sample_tts.md test_kore.wav --voice Kore
 python main.py tests/samples/sample_tts.md test_leda.wav --voice Leda
-```
-
-## 📊 既存システムとの比較
-
-| 項目 | Google Cloud TTS | Gemini TTS |
-|------|------------------|------------|
-| **コスト** | 従量課金 | 現在無料（プレビュー） |
-| **音声品質** | Neural2-B（高品質） | より自然な音声 |
-| **音声選択** | 限定的 | 30種類から選択 |
-| **言語サポート** | 日本語 | 24言語 |
-| **Markdownクリーンアップ** | プログラム内（ルール違反） | 台本ファイル（ルール準拠） |
-| **出力形式** | MP3 | WAV（PCM 24kHz） |
-
-## ✅ 移行完了
-
-**Google Cloud TTSから完全移行済み**
-
-### 移行した内容
-- **メインシステム**: main.py（Gemini TTS使用）
-- **旧システム**: archive/フォルダに移動済み
-- **API設定**: .envファイルで永続化
-- **音声品質**: Ledaをデフォルトに変更
-- **CLAUDE.mdルール**: 完全準拠
-
-### 旧システムアクセス（緊急時のみ）
-```bash
-# 旧Google Cloud TTSシステム（archive内）
-python archive/main_google_cloud.py input_TTS.md output.mp3
 ```
 
 ## ⚠️ 注意事項
@@ -177,6 +129,14 @@ GOOGLE_API_KEY="your_api_key" python main.py input.md output.wav
 - WAV形式での出力確認
 - PCM 24kHz 16bit モノラル仕様
 - 再生ソフトの対応確認
+
+## 🔧 技術仕様
+
+- **API**: Gemini 2.5 Flash Preview TTS
+- **出力形式**: WAV（PCM 24kHz 16bit モノラル）
+- **音声選択**: 30種類の音声から選択
+- **言語サポート**: 24言語対応
+- **テキスト制限**: 2000文字チャンクで分割処理
 
 ## 📈 将来の拡張予定
 
