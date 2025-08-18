@@ -85,7 +85,7 @@ def convert_text_to_speech_gemini(text: str, voice_name: str = "Leda") -> bytes:
     
     Args:
         text: 変換するテキスト（Markdownクリーンアップ済み前提）
-        voice_name: 使用する音声名（デフォルト：Kore）
+        voice_name: 使用する音声名（デフォルト：Leda、高品質推奨）
         
     Returns:
         bytes: 音声データ（WAV形式）
