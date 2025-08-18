@@ -38,10 +38,14 @@ def main():
         help="出力音声ファイル（.wav）。省略時は入力ファイル名.wav"
     )
     
+    # 環境変数からデフォルト音声を取得（高品質優先）
+    import os
+    default_voice = os.getenv('DEFAULT_VOICE', 'Leda')  # 高品質なLedaをデフォルト
+    
     parser.add_argument(
         "--voice", "-v",
-        default="Kore",
-        help="音声名（デフォルト：Kore）"
+        default=default_voice,
+        help=f"音声名（デフォルト：{default_voice}）"
     )
     
     parser.add_argument(

@@ -74,7 +74,7 @@ def split_text_by_length(text: str, max_length: int = 2000) -> list[str]:
     return chunks
 
 
-def convert_text_to_speech_gemini(text: str, voice_name: str = "Kore") -> bytes:
+def convert_text_to_speech_gemini(text: str, voice_name: str = "Leda") -> bytes:
     """
     Gemini APIでテキストを音声データに変換
     
@@ -152,7 +152,7 @@ def save_audio_file_wav(audio_data: bytes, output_path: Union[str, Path]) -> Non
         wf.writeframes(audio_data)
 
 
-def convert_long_text_to_speech_gemini(text: str, voice_name: str = "Kore") -> bytes:
+def convert_long_text_to_speech_gemini(text: str, voice_name: str = "Leda") -> bytes:
     """
     長文テキストを分割してGemini TTS変換し、音声を結合
     
@@ -182,7 +182,7 @@ def convert_long_text_to_speech_gemini(text: str, voice_name: str = "Kore") -> b
 
 
 def process_tts_file_gemini(input_file: Union[str, Path], output_file: Union[str, Path], 
-                           voice_name: str = "Kore") -> Path:
+                           voice_name: str = "Leda") -> Path:
     """
     TTSファイルをGemini API使用で音声ファイルに変換
     
@@ -210,10 +210,10 @@ def process_tts_file_gemini(input_file: Union[str, Path], output_file: Union[str
     return Path(output_file)
 
 
-# 利用可能な音声リスト（日本語に適した音声を優先）
+# 利用可能な音声リスト（高品質順）
 AVAILABLE_VOICES = [
-    "Kore",  # Firm - 日本語に適している
-    "Leda",  # Youthful - 若々しい声
+    "Leda",  # Youthful - 若々しい声（高品質推奨）
+    "Kore",  # Firm - しっかりした声
     "Puck",  # Upbeat - 明るい声
     "Aoede",  # Breezy - さわやかな声
     "Zephyr",  # Bright - 明るい声
