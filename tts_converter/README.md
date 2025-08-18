@@ -73,20 +73,12 @@ python main.py --list-voices
 
 ## 🧪 テスト
 
-### 単体テスト実行
 ```bash
-# Gemini TTS機能のテスト
-pytest tests/test_gemini_tts_converter.py -v
-```
+# 実際のTTSファイルでテスト
+python main.py your_file_TTS.md output.wav
 
-### 手動テスト
-```bash
-# サンプルファイルでテスト
-python main.py tests/samples/sample_tts.md test_output.wav
-
-# 複数音声でテスト
-python main.py tests/samples/sample_tts.md test_kore.wav --voice Kore
-python main.py tests/samples/sample_tts.md test_leda.wav --voice Leda
+# 音声変更テスト
+python main.py your_file_TTS.md output.wav --voice Kore
 ```
 
 ## ⚠️ 注意事項
