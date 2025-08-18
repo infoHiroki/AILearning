@@ -24,8 +24,19 @@ wheels/
 .installed.cfg
 *.egg
 
-# Audio output files
-audio_output/
+# Audio output files (removing this to track successful outputs)
+# audio_output/
+
+# Test generation files
+test_*.md
+test_*.wav
+temp_*.md
+temp_*.wav
+
+# Testing cache
+.pytest_cache/
+.coverage
+htmlcov/
 
 # OS files
 .DS_Store
