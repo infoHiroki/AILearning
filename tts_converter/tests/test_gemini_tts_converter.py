@@ -195,22 +195,3 @@ def test_process_tts_file_gemini_integration():
                     output_file.unlink()
 
 
-def test_gemini_vs_google_cloud_tts_comparison():
-    """Gemini TTS vs Google Cloud TTS比較テスト"""
-    # この関数は実際のAPIを使用するため、統合テスト時のみ実行
-    # 環境変数INTEGRATION_TESTが設定されている場合のみ実行
-    
-    if not os.getenv('INTEGRATION_TEST'):
-        pytest.skip("統合テストをスキップ（INTEGRATION_TEST環境変数が未設定）")
-    
-    from gemini_tts_converter import process_tts_file_gemini
-    from tts_converter import process_tts_file
-    
-    test_file = Path(__file__).parent / "samples" / "sample_tts.md"
-    
-    # 両方のTTSで同じファイルを変換（実際のテストは手動実行）
-    # gemini_output = Path("integration_test_gemini.wav")
-    # google_output = Path("integration_test_google.mp3")
-    
-    print("統合テスト実行には実際のAPI KEYが必要です")
-    print("手動でのテスト実行を推奨します")
