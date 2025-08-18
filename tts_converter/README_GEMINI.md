@@ -40,13 +40,13 @@ export GOOGLE_API_KEY="your_gemini_api_key"
 ### 基本的な使用例
 ```bash
 # 基本変換（Kore音声）
-python main_gemini.py プロンプト基礎_TTS.md プロンプト基礎.wav
+python main.py プロンプト基礎_TTS.md プロンプト基礎.wav
 
 # 音声指定
-python main_gemini.py プロンプト基礎_TTS.md プロンプト基礎.wav --voice Leda
+python main.py プロンプト基礎_TTS.md プロンプト基礎.wav --voice Leda
 
 # 利用可能音声一覧
-python main_gemini.py --list-voices
+python main.py --list-voices
 ```
 
 ### 🎙️ 推奨音声（日本語）
@@ -98,11 +98,11 @@ INTEGRATION_TEST=1 pytest tests/test_gemini_tts_converter.py::test_gemini_vs_goo
 ### 手動テスト
 ```bash
 # サンプルファイルでテスト
-python main_gemini.py tests/samples/sample_tts.md test_output.wav
+python main.py tests/samples/sample_tts.md test_output.wav
 
 # 複数音声でテスト
-python main_gemini.py tests/samples/sample_tts.md test_kore.wav --voice Kore
-python main_gemini.py tests/samples/sample_tts.md test_leda.wav --voice Leda
+python main.py tests/samples/sample_tts.md test_kore.wav --voice Kore
+python main.py tests/samples/sample_tts.md test_leda.wav --voice Leda
 ```
 
 ## 📊 既存システムとの比較
@@ -120,11 +120,11 @@ python main_gemini.py tests/samples/sample_tts.md test_leda.wav --voice Leda
 
 ### Phase 1: 並行運用
 ```bash
-# 既存システム
-python main.py input_TTS.md output.mp3
+# 旧システム（現在はarchive/に移動）
+python archive/main_google_cloud.py input_TTS.md output.mp3
 
-# 新システム
-python main_gemini.py input_TTS.md output.wav
+# 現在のシステム（Gemini TTS）
+python main.py input_TTS.md output.wav
 ```
 
 ### Phase 2: 段階的移行
